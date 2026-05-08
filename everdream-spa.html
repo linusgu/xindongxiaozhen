@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心动小镇攻略站 · Everdream Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   DESIGN TOKENS
+══════════════════════════════════════ */
+:root {
+  --mint: #7ecab5;
+  --mint-light: #c8ede5;
+  --mint-dark: #3d9e87;
+  --peach: #f5b8a0;
+  --peach-light: #fde8df;
+  --peach-dark: #e07a55;
+  --lavender: #c4b5f0;
+  --lavender-light: #ede9fc;
+  --lavender-dark: #6b4fc9;
+  --yellow: #f5d97a;
+  --yellow-light: #fef7d8;
+  --yellow-dark: #9a7310;
+  --cream: #fdf8f0;
+  --brown: #5a3e2b;
+  --brown-mid: #8a6a55;
+  --text: #2d1f14;
+  --text-muted: #7a6555;
+  --border: #e8d8cc;
+  --white: #ffffff;
+  --shadow: rgba(90,62,43,0.10);
+  --shadow-md: rgba(90,62,43,0.16);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════
+   PAGE TRANSITIONS
+══════════════════════════════════════ */
+.page {
+  display: none;
+  animation: fadeIn 0.28s ease;
+}
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   TOP BAR
+══════════════════════════════════════ */
+.topbar {
+  background: var(--brown);
+  color: #ecddd3;
+  font-size: 12px;
+  padding: 6px 0;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+.topbar span { margin: 0 16px; }
+.topbar a { color: var(--yellow); text-decoration: none; }
+
+/* ══════════════════════════════════════
+   HEADER / NAV
+══════════════════════════════════════ */
+header {
+  background: linear-gradient(135deg, #fef4ec 0%, #e8f7f2 50%, #eee8fd 100%);
+  border-bottom: 2px solid var(--border);
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.logo-icon {
+  width: 46px; height: 46px;
+  background: var(--mint);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 2px 8px rgba(126,202,181,0.35);
+  transition: transform 0.2s;
+}
+.logo:hover .logo-icon { transform: rotate(-8deg) scale(1.08); }
+.logo-text {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 22px;
+  color: var(--brown);
+  letter-spacing: 0.05em;
+}
+.logo-sub {
+  font-size: 10px;
+  color: var(--mint-dark);
+  letter-spacing: 0.12em;
+  margin-top: -4px;
+}
+nav { display: flex; gap: 2px; align-items: center; }
+nav a {
+  font-size: 13px;
+  color: var(--brown-mid);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none; background: none;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+nav a:hover, nav a.nav-active {
+  background: var(--mint-light);
+  color: var(--mint-dark);
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 6px 16px;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.search-box:hover { border-color: var(--mint); }
+.search-box input {
+  border: none; outline: none;
+  font-size: 13px; width: 140px;
+  background: transparent;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text);
+  cursor: pointer;
+}
+.search-box input::placeholder { color: var(--text-muted); }
+.search-btn {
+  background: var(--mint);
+  border: none; color: white;
+  width: 26px; height: 26px;
+  border-radius: 50%; cursor: pointer;
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.search-btn:hover { background: var(--mint-dark); }
+
+/* ══════════════════════════════════════
+   BREADCRUMB
+══════════════════════════════════════ */
+.breadcrumb {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 40px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.breadcrumb a {
+  color: var(--mint-dark);
+  text-decoration: none;
+  cursor: pointer;
+}
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: var(--border); }
+
+/* ══════════════════════════════════════
+   HERO (HOME)
+══════════════════════════════════════ */
+.hero {
+  background: linear-gradient(160deg, #fceee6 0%, #e4f5ef 40%, #ede8fc 100%);
+  padding: 64px 40px 50px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '🌸';
+  position: absolute; top: 20px; left: 60px; font-size: 40px; opacity: 0.25;
+}
+.hero::after {
+  content: '🌻';
+  position: absolute; bottom: 20px; right: 80px; font-size: 36px; opacity: 0.2;
+}
+.hero-badge {
+  display: inline-block;
+  background: var(--yellow-light);
+  color: var(--brown);
+  border: 1px solid var(--yellow);
+  border-radius: 20px;
+  font-size: 12px;
+  padding: 4px 14px;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+.hero h1 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 48px;
+  color: var(--brown);
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+.hero p {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto 28px;
+}
+.hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--mint); color: white;
+  border: none; padding: 12px 28px;
+  border-radius: 28px; font-size: 14px;
+  font-weight: 500; cursor: pointer;
+  text-decoration: none;
+  font-family: 'Noto Sans SC', sans-serif;
+  box-shadow: 0 4px 14px rgba(126,202,181,0.4);
+  transition: all 0.2s; display: inline-block;
+}
+.btn-primary:hover { background: var(--mint-dark); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; color: var(--brown);
+  border: 1.5px solid var(--border);
+  padding: 11px 28px; border-radius: 28px;
+  font-size: 14px; cursor: pointer;
+  text-decoration: none;
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: all 0.2s; display: inline-block;
+}
+.btn-outline:hover { border-color: var(--mint); color: var(--mint-dark); background: var(--mint-light); }
+
+/* ══════════════════════════════════════
+   STATS BAR
+══════════════════════════════════════ */
+.stats-bar {
+  background: var(--brown);
+  padding: 18px 40px;
+}
+.stats-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: center; gap: 60px;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-size: 22px; font-weight: 700;
+  color: var(--yellow);
+  font-family: 'Noto Serif SC', serif;
+}
+.stat-label { font-size: 11px; color: #c5b0a0; letter-spacing: 0.08em; margin-top: 2px; }
+
+/* ══════════════════════════════════════
+   HOME MAIN LAYOUT
+══════════════════════════════════════ */
+.home-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 40px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+.section-title {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+}
+.section-title h2 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 22px; color: var(--brown);
+}
+.title-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.title-line { flex: 1; height: 1px; background: var(--border); }
+
+/* category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px; margin-bottom: 40px;
+}
+.cat-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px; padding: 20px 16px;
+  text-align: center; cursor: pointer;
+  transition: all 0.22s;
+  text-decoration: none; color: var(--text);
+  display: block;
+}
+.cat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px var(--shadow); border-color: transparent; }
+.cat-card.mint:hover  { background: var(--mint-light); }
+.cat-card.peach:hover { background: var(--peach-light); }
+.cat-card.lavender:hover { background: var(--lavender-light); }
+.cat-card.yellow:hover   { background: var(--yellow-light); }
+.cat-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+.cat-name { font-size: 13px; font-weight: 500; color: var(--brown); display: block; }
+.cat-count { font-size: 11px; color: var(--text-muted); margin-top: 3px; display: block; }
+
+/* guide cards */
+.guide-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+  display: flex; gap: 16px;
+  margin-bottom: 12px; cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none; color: inherit;
+}
+.guide-card:hover { box-shadow: 0 4px 16px var(--shadow); border-color: var(--mint-light); }
+.guide-thumb {
+  width: 70px; height: 70px;
+  border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 28px;
+}
+.guide-info { flex: 1; min-width: 0; }
+.guide-tags { display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap; }
+.tag { font-size: 10px; padding: 2px 10px; border-radius: 10px; font-weight: 500; letter-spacing: 0.04em; }
+.tag-mint { background: var(--mint-light); color: var(--mint-dark); }
+.tag-peach { background: var(--peach-light); color: var(--peach-dark); }
+.tag-lavender { background: var(--lavender-light); color: var(--lavender-dark); }
+.tag-yellow { background: var(--yellow-light); color: var(--yellow-dark); }
+.guide-title { font-size: 15px; font-weight: 500; color: var(--brown); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.guide-desc { font-size: 12px; color: var(--text-muted); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.guide-meta { font-size: 11px; color: #b0a098; margin-top: 6px; }
+
+/* tabs */
+.tabs { display: flex; gap: 4px; margin-bottom: 18px; }
+.tab {
+  padding: 7px 18px; border-radius: 20px;
+  font-size: 13px; cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.18s;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 500; color: var(--text-muted); background: transparent;
+}
+.tab.active { background: var(--mint); color: white; border-color: var(--mint); }
+.tab:not(.active):hover { border-color: var(--border); background: var(--white); color: var(--brown); }
+
+/* sidebar widgets */
+.sidebar { display: flex; flex-direction: column; gap: 24px; }
+.widget { background: var(--white); border: 1.5px solid var(--border); border-radius: 16px; overflow: hidden; }
+.widget-header {
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.widget-header h3 { font-family: 'Ma Shan Zheng', cursive; font-size: 16px; color: var(--brown); }
+.widget-body { padding: 16px 18px; }
+
+/* calendar */
+.calendar-month { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.cal-nav { background: none; border: none; cursor: pointer; font-size: 14px; color: var(--text-muted); padding: 4px 8px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; text-align: center; }
+.cal-grid .dow { font-size: 10px; color: var(--text-muted); padding: 4px 0; font-weight: 500; }
+.cal-grid .day { font-size: 12px; padding: 5px 0; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+.cal-grid .day:hover { background: var(--mint-light); }
+.cal-grid .day.today { background: var(--mint); color: white; font-weight: 600; }
+.cal-grid .day.event { position: relative; }
+.cal-grid .day.event::after { content:''; position:absolute; bottom:2px; left:50%; transform:translateX(-50%); width:4px; height:4px; border-radius:50%; background:var(--peach-dark); }
+.cal-grid .day.other-month { color: var(--border); }
+.event-list { margin-top: 14px; }
+.event-item { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.event-item:last-child { border-bottom:none; }
+.event-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.event-date { color:var(--text-muted); min-width:36px; font-size:11px; }
+.event-name { color:var(--brown); font-weight:500; }
+
+/* char rows in sidebar */
+.char-row { display:flex; align-items:center; gap:12px; padding:8px 0; border-bottom:1px solid var(--border); cursor:pointer; border-radius:8px; transition: background 0.15s; }
+.char-row:hover { background: var(--cream); }
+.char-row:last-child { border-bottom:none; }
+.char-avatar { width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.char-name { font-size:13px; font-weight:500; color:var(--brown); }
+.char-sub { font-size:11px; color:var(--text-muted); }
+.char-badge { margin-left:auto; font-size:10px; padding:3px 8px; border-radius:10px; font-weight:500; }
+
+/* tier */
+.tier-row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.tier-label { width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0; }
+.tier-icons { display:flex; gap:6px; flex-wrap:wrap; }
+.tier-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer; transition:transform 0.15s; border:1.5px solid transparent; }
+.tier-icon:hover { transform:scale(1.15); }
+
+/* update feed */
+.update-item { padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.update-item:last-child { border-bottom:none; }
+.update-date { color:var(--text-muted); font-size:10px; margin-bottom:3px; }
+.update-title { color:var(--brown); font-weight:500; }
+.update-badge { display:inline-block; font-size:9px; padding:1px 7px; border-radius:8px; margin-right:6px; font-weight:500; }
+
+/* new player */
+.new-player {
+  background: linear-gradient(135deg, var(--mint-light), var(--lavender-light));
+  border: 1.5px solid var(--mint-light);
+  border-radius: 16px; padding: 24px; margin-bottom: 32px;
+}
+.new-player h3 { font-family:'Ma Shan Zheng',cursive; font-size:18px; color:var(--brown); margin-bottom:14px; }
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.step { background:rgba(255,255,255,0.65); border-radius:12px; padding:14px 10px; text-align:center; }
+.step-num { width:24px; height:24px; border-radius:50%; background:var(--mint); color:white; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 8px; }
+.step-icon { font-size:20px; margin-bottom:6px; }
+.step-text { font-size:11px; color:var(--brown-mid); line-height:1.5; }
+
+/* ══════════════════════════════════════
+   CHARACTER LIST PAGE
+══════════════════════════════════════ */
+.char-page-hero {
+  background: linear-gradient(135deg, #fde8df 0%, #c8ede5 60%, #ede9fc 100%);
+  padding: 44px 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.char-page-hero::before { content:'🌸'; position:absolute; top:16px; right:100px; font-size:50px; opacity:0.18; }
+.char-page-hero::after  { content:'🌿'; position:absolute; bottom:10px; left:80px; font-size:40px; opacity:0.15; }
+.char-page-hero-inner { max-width:1200px; margin:0 auto; }
+.char-page-hero h1 {
+  font-family:'Ma Shan Zheng', cursive;
+  font-size: 36px; color: var(--brown);
+  margin-bottom: 6px;
+}
+.char-page-hero p { font-size:14px; color:var(--text-muted); }
+
+/* filter bar */
+.filter-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  position: sticky;
+  top: 72px;
+  z-index: 150;
+}
+.filter-bar-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 0; flex-wrap: wrap;
+}
+.filter-label { font-size: 12px; color: var(--text-muted); font-weight: 500; flex-shrink: 0; }
+.filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-chip {
+  padding: 5px 14px; border-radius: 20px;
+  font-size: 12px; cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: transparent; color: var(--brown-mid);
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: all 0.18s; font-weight: 500;
+}
+.filter-chip:hover { border-color: var(--mint); color: var(--mint-dark); }
+.filter-chip.active { background: var(--mint); border-color: var(--mint); color: white; }
+.filter-divider { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+.char-search {
+  margin-left: auto;
+  display: flex; align-items: center;
+  background: var(--cream);
+  border: 1.5px solid var(--border);
+  border-radius: 20px; padding: 5px 14px; gap: 6px;
+}
+.char-search input {
+  border: none; outline: none;
+  background: transparent; font-size: 13px;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: var(--text); width: 140px;
+}
+.char-search input::placeholder { color: var(--text-muted); }
+
+/* char grid */
+.char-list-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 40px 60px;
+}
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+.char-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-decoration: none; color: inherit;
+  position: relative;
+}
+.char-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px var(--shadow-md);
+  border-color: transparent;
+}
+.char-card-portrait {
+  height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 54px;
+  position: relative;
+}
+.char-card-portrait::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, var(--white));
+}
+.char-card-heart {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer;
+  transition: transform 0.2s;
+  border: 1px solid var(--border);
+}
+.char-card-heart:hover { transform: scale(1.2); }
+.char-card-heart.liked { background: var(--peach-light); border-color: var(--peach); }
+.char-card-body { padding: 14px 14px 16px; }
+.char-card-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px; font-weight: 600;
+  color: var(--brown); margin-bottom: 4px;
+}
+.char-card-role { font-size: 11px; color: var(--text-muted); margin-bottom: 10px; }
+.char-card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+.heart-bar {
+  display: flex; gap: 2px; margin-top: 10px;
+}
+.heart-pip {
+  width: 14px; height: 6px; border-radius: 3px;
+  background: var(--border); transition: background 0.2s;
+}
+.heart-pip.filled { background: var(--peach); }
+.char-card-label {
+  position: absolute; top: 10px; left: 10px;
+  font-size: 9px; padding: 3px 8px;
+  border-radius: 8px; font-weight: 600;
+  letter-spacing: 0.06em;
+}
+/* empty state */
+.char-empty {
+  grid-column: 1/-1;
+  text-align: center; padding: 60px 0;
+  color: var(--text-muted); font-size: 14px;
+}
+.char-empty-icon { font-size: 40px; margin-bottom: 12px; }
+
+/* ══════════════════════════════════════
+   CHARACTER DETAIL PAGE
+══════════════════════════════════════ */
+.detail-hero {
+  background: linear-gradient(135deg, #fceee6 0%, #e4f5ef 60%, #ede8fc 100%);
+  padding: 40px;
+  position: relative; overflow: hidden;
+}
+.detail-hero-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; gap: 40px; align-items: flex-start;
+}
+.detail-portrait {
+  width: 180px; height: 180px;
+  border-radius: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px; flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 30px var(--shadow-md);
+  position: relative;
+}
+.detail-portrait-badge {
+  position: absolute; bottom: -10px; right: -10px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--white); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; box-shadow: 0 2px 8px var(--shadow);
+}
+.detail-info { flex: 1; }
+.detail-name {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 40px; color: var(--brown);
+  margin-bottom: 4px; line-height: 1.2;
+}
+.detail-title { font-size: 14px; color: var(--text-muted); margin-bottom: 14px; }
+.detail-tags { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.detail-tag {
+  font-size: 12px; padding: 4px 14px;
+  border-radius: 12px; font-weight: 500;
+}
+.detail-bio {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.8; max-width: 560px;
+}
+.detail-stats {
+  display: flex; gap: 24px; margin-top: 20px;
+}
+.detail-stat { text-align: center; }
+.detail-stat-num {
+  font-size: 22px; font-weight: 700;
+  color: var(--brown);
+  font-family: 'Noto Serif SC', serif;
+}
+.detail-stat-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.detail-like-btn {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--peach-light); color: var(--peach-dark);
+  border: 1.5px solid var(--peach);
+  padding: 10px 22px; border-radius: 24px;
+  font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: 'Noto Sans SC', sans-serif;
+  transition: all 0.2s; margin-top: 18px;
+}
+.detail-like-btn:hover { background: var(--peach); color: white; border-color: var(--peach-dark); }
+
+/* detail body */
+.detail-body {
+  max-width: 1200px; margin: 0 auto;
+  padding: 36px 40px 60px;
+  display: grid; grid-template-columns: 1fr 300px;
+  gap: 36px; align-items: start;
+}
+/* section card */
+.detail-section {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden; margin-bottom: 20px;
+}
+.detail-section-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.detail-section-header h3 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: 17px; color: var(--brown);
+}
+.detail-section-body { padding: 20px; }
+
+/* gift table */
+.gift-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.gift-table th {
+  text-align: left; padding: 8px 10px;
+  font-weight: 500; color: var(--text-muted);
+  border-bottom: 1px solid var(--border); font-size: 12px;
+}
+.gift-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); }
+.gift-table tr:last-child td { border-bottom: none; }
+.gift-table tr:hover td { background: var(--cream); }
+.gift-icon { font-size: 18px; margin-right: 8px; }
+.gift-name { font-weight: 500; color: var(--brown); }
+.gift-effect {
+  font-size: 11px; padding: 2px 8px;
+  border-radius: 8px; font-weight: 600;
+}
+
+/* schedule */
+.schedule-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; }
+.schedule-day {
+  text-align: center; background: var(--cream);
+  border-radius: 10px; padding: 8px 4px;
+  font-size: 11px;
+}
+.schedule-day-name { font-weight: 500; color: var(--brown); margin-bottom: 6px; }
+.schedule-slot {
+  background: var(--white); border-radius: 6px;
+  padding: 5px 4px; margin-bottom: 4px;
+  font-size: 10px; color: var(--text-muted);
+  border: 1px solid var(--border); line-height: 1.4;
+}
+.schedule-slot strong { display:block; color:var(--brown); font-size:9px; }
+
+/* story events */
+.story-event {
+  display: flex; gap: 16px;
+  margin-bottom: 16px; padding-bottom: 16px;
+  border-bottom: 1px dashed var(--border);
+}
+.story-event:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+.story-heart-level {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--peach-light); color: var(--peach-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+  border: 2px solid var(--peach);
+}
+.story-event-title { font-weight: 500; color: var(--brown); font-size: 14px; margin-bottom: 4px; }
+.story-event-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+.story-event-badge {
+  display: inline-block; font-size: 10px;
+  padding: 2px 8px; border-radius: 8px; margin-bottom: 4px;
+}
+
+/* tips list */
+.tip-item {
+  display: flex; gap: 12px;
+  padding: 10px 0; border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.tip-item:last-child { border-bottom: none; }
+.tip-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--mint); color: white;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: 1px;
+}
+.tip-text { color: var(--text-muted); line-height: 1.6; }
+.tip-text strong { color: var(--brown); }
+
+/* sidebar detail */
+.detail-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+/* info table */
+.info-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.info-table tr { border-bottom: 1px solid var(--border); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td { padding: 9px 0; vertical-align: top; }
+.info-table td:first-child { color: var(--text-muted); width: 80px; font-size: 12px; }
+.info-table td:last-child { color: var(--brown); font-weight: 500; }
+
+/* affection bar */
+.affection-section { margin-bottom: 16px; }
+.affection-label {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--text-muted); margin-bottom: 6px;
+}
+.affection-bar {
+  height: 8px; background: var(--border);
+  border-radius: 4px; overflow: hidden;
+}
+.affection-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--peach), var(--peach-dark));
+  transition: width 0.6s ease;
+}
+
+/* related chars */
+.related-char {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid var(--border); cursor: pointer;
+  transition: background 0.15s; border-radius: 6px;
+}
+.related-char:hover { background: var(--cream); }
+.related-char:last-child { border-bottom: none; }
+.related-avatar { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.related-name { font-size:13px; font-weight:500; color:var(--brown); }
+.related-rel { font-size:11px; color:var(--text-muted); }
+.related-arrow { margin-left:auto; font-size:12px; color:var(--text-muted); }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+footer {
+  background: var(--brown);
+  color: #c5b0a0;
+  padding: 40px;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+}
+.footer-logo { font-family:'Ma Shan Zheng',cursive; font-size:20px; color:var(--yellow); margin-bottom:10px; }
+.footer-desc { font-size:12px; line-height:1.8; }
+footer h4 { font-size:13px; color:#ecddd3; font-weight:600; margin-bottom:14px; letter-spacing:0.05em; }
+footer ul { list-style:none; }
+footer li { margin-bottom:8px; }
+footer a { color:#a09080; font-size:12px; text-decoration:none; cursor:pointer; transition:color 0.2s; }
+footer a:hover { color:var(--mint); }
+.footer-bottom {
+  border-top:1px solid rgba(255,255,255,0.1);
+  text-align:center; font-size:11px;
+  padding-top:20px; margin-top:30px;
+  max-width:1200px; margin:30px auto 0;
+}
+
+/* ══════════════════════════════════════
+   SEARCH OVERLAY
+══════════════════════════════════════ */
+.search-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(45,31,20,0.5); z-index:300;
+  align-items:flex-start; justify-content:center; padding-top:80px;
+}
+.search-overlay.show { display:flex; }
+.search-modal {
+  background:var(--white); border-radius:20px; width:560px;
+  overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+.search-modal-top {
+  display:flex; align-items:center; gap:12px;
+  padding:18px 20px; border-bottom:1px solid var(--border);
+}
+.search-modal-top input {
+  flex:1; border:none; outline:none;
+  font-size:16px; font-family:'Noto Sans SC',sans-serif; color:var(--text);
+}
+.search-results { padding:12px 0; max-height:360px; overflow-y:auto; }
+.search-result-item { padding:10px 20px; display:flex; align-items:center; gap:12px; cursor:pointer; }
+.search-result-item:hover { background:var(--cream); }
+
+/* ══════════════════════════════════════
+   BACK TO TOP
+══════════════════════════════════════ */
+.back-to-top {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--mint); color: white; border: none;
+  font-size: 18px; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(126,202,181,0.45);
+  display: none; align-items: center; justify-content: center;
+  transition: all 0.2s; z-index: 100;
+}
+.back-to-top.show { display: flex; }
+.back-to-top:hover { background: var(--mint-dark); transform: translateY(-2px); }
+
+@media (max-width:900px) {
+  .home-main, .detail-body { grid-template-columns:1fr; }
+  .category-grid { grid-template-columns:repeat(2,1fr); }
+  .footer-inner { grid-template-columns:1fr 1fr; }
+  .steps { grid-template-columns:repeat(2,1fr); }
+  .char-grid { grid-template-columns:repeat(3,1fr); }
+  header { padding:0 20px; }
+  nav { display:none; }
+  .filter-bar { padding:0 20px; }
+  .char-list-body, .detail-hero, .detail-hero-inner, .detail-body { padding-left:20px; padding-right:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>🌟 最新攻略：<a href="#" onclick="navigate('home')">夏日海边节活动全流程</a></span>
+  <span>|</span>
+  <span>版本 1.4.2 已更新</span>
+  <span>|</span>
+  <span>✦ 加入我们的攻略群组</span>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo" onclick="navigate('home')">
+      <div class="logo-icon">🏡</div>
+      <div>
+        <div class="logo-text">心动小镇攻略站</div>
+        <div class="logo-sub" style="font-family:'Noto Sans SC',sans-serif">EVERDREAM VILLAGE WIKI</div>
+      </div>
+    </div>
+    <nav>
+      <a onclick="navigate('home')" id="nav-home">新手入门</a>
+      <a onclick="navigate('charList')" id="nav-charList">角色图鉴</a>
+      <a onclick="navigate('home')">任务攻略</a>
+      <a onclick="navigate('home')">道具大全</a>
+      <a onclick="navigate('home')">活动日历</a>
+      <a onclick="navigate('home')">社区</a>
+    </nav>
+    <div class="search-box" onclick="document.getElementById('searchOverlay').classList.add('show')">
+      <span style="font-size:14px; color:var(--text-muted)">🔍</span>
+      <input type="text" placeholder="搜索攻略、角色、道具…" readonly>
+      <button class="search-btn">→</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🌼 心动小镇 v1.4 · 夏日版本</div>
+    <h1>欢迎来到心动小镇攻略站</h1>
+    <p>全面收录角色攻略、农场技巧、任务流程、节日活动，让你的小镇生活更精彩！</p>
+    <div class="hero-btns">
+      <a class="btn-primary" onclick="navigate('charList')">🌱 新手入门指南</a>
+      <a class="btn-outline" onclick="navigate('charList')">📖 查看所有攻略</a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-num">386</div><div class="stat-label">攻略文章</div></div>
+      <div class="stat"><div class="stat-num">42</div><div class="stat-label">可互动角色</div></div>
+      <div class="stat"><div class="stat-num">1,200+</div><div class="stat-label">道具数据</div></div>
+      <div class="stat"><div class="stat-num">28万</div><div class="stat-label">月活玩家</div></div>
+      <div class="stat"><div class="stat-num">每日</div><div class="stat-label">更新频率</div></div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="home-main">
+    <div>
+      <!-- new player -->
+      <div class="new-player">
+        <h3>🌟 新手快速上手</h3>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-icon">🏠</div><div class="step-text">建立基础小屋，开垦第一块农地</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-icon">🌾</div><div class="step-text">种植应季作物，积累初始金币</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-icon">🤝</div><div class="step-text">与镇民互动，提升好感度</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-icon">🎪</div><div class="step-text">参加节日活动，获取限定奖励</div></div>
+        </div>
+      </div>
+
+      <!-- categories -->
+      <div class="section-title">
+        <div class="title-dot" style="background:var(--mint)"></div>
+        <h2>攻略分类</h2>
+        <div class="title-line"></div>
+      </div>
+      <div class="category-grid">
+        <a class="cat-card mint" onclick="navigate('charList')"><span class="cat-icon">👥</span><span class="cat-name">角色图鉴</span><span class="cat-count">42 位角色</span></a>
+        <a class="cat-card peach" onclick="navigate('home')"><span class="cat-icon">🌾</span><span class="cat-name">农场种植</span><span class="cat-count">86 种作物</span></a>
+        <a class="cat-card lavender" onclick="navigate('home')"><span class="cat-icon">📋</span><span class="cat-name">任务攻略</span><span class="cat-count">124 条任务</span></a>
+        <a class="cat-card yellow" onclick="navigate('home')"><span class="cat-icon">🎪</span><span class="cat-name">节日活动</span><span class="cat-count">12 场年度活动</span></a>
+        <a class="cat-card yellow" onclick="navigate('home')"><span class="cat-icon">🏗️</span><span class="cat-name">建造装饰</span><span class="cat-count">300+ 家具</span></a>
+        <a class="cat-card mint" onclick="navigate('home')"><span class="cat-icon">⚗️</span><span class="cat-name">合成配方</span><span class="cat-count">200+ 配方</span></a>
+        <a class="cat-card peach" onclick="navigate('home')"><span class="cat-icon">🐾</span><span class="cat-name">宠物养殖</span><span class="cat-count">32 种动物</span></a>
+        <a class="cat-card lavender" onclick="navigate('home')"><span class="cat-icon">🗺️</span><span class="cat-name">地图探索</span><span class="cat-count">8 大地区</span></a>
+      </div>
+
+      <!-- guide list -->
+      <div class="section-title" style="margin-top:32px">
+        <div class="title-dot" style="background:var(--peach-dark)"></div>
+        <h2>热门攻略</h2>
+        <div class="title-line"></div>
+      </div>
+      <div class="tabs">
+        <button class="tab active">🔥 最热</button>
+        <button class="tab">🆕 最新</button>
+        <button class="tab" onclick="navigate('charList')">👤 角色</button>
+        <button class="tab">🌾 农场</button>
+        <button class="tab">🎪 活动</button>
+      </div>
+
+      <a class="guide-card" onclick="navigate('charDetail','sx')">
+        <div class="guide-thumb" style="background:var(--peach-light)">💕</div>
+        <div class="guide-info">
+          <div class="guide-tags"><span class="tag tag-lavender">角色攻略</span><span class="tag tag-yellow">好感度</span></div>
+          <div class="guide-title">苏晓晨好感度满级攻略 · 赠礼偏好 & 约会地点</div>
+          <div class="guide-desc">苏晓晨是镇上的花店老板，最爱向日葵和手工点心。本文整理所有好感度对话触发条件、赠礼列表以及心动事件解锁时间线。</div>
+          <div class="guide-meta">更新：5天前 · 👁 9,341 · ❤️ 726</div>
+        </div>
+      </a>
+      <a class="guide-card" onclick="navigate('charDetail','lm')">
+        <div class="guide-thumb" style="background:var(--mint-light)">🌿</div>
+        <div class="guide-info">
+          <div class="guide-tags"><span class="tag tag-mint">角色攻略</span><span class="tag tag-mint">新手友好</span></div>
+          <div class="guide-title">林木木全攻略 · 触发条件与赠礼一览</div>
+          <div class="guide-desc">农场顾问林木木是最早解锁的可互动角色之一，赠礼偏好以蔬果类为主。本文收录完整好感度路线与特殊剧情触发条件。</div>
+          <div class="guide-meta">更新：1周前 · 👁 7,210 · ❤️ 583</div>
+        </div>
+      </a>
+      <a class="guide-card" onclick="navigate('home')">
+        <div class="guide-thumb" style="background:var(--yellow-light)">💰</div>
+        <div class="guide-info">
+          <div class="guide-tags"><span class="tag tag-mint">农场</span><span class="tag tag-yellow">金币效率</span></div>
+          <div class="guide-title">夏季农场利润最大化 · 最优作物种植搭配</div>
+          <div class="guide-desc">经过数据测算，夏季种植草莓+蓝莓+甜瓜的组合年化收益最高，单格地块每季净利可达680金币。</div>
+          <div class="guide-meta">更新：1周前 · 👁 8,099 · ❤️ 612</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="widget">
+        <div class="widget-header"><span style="font-size:16px">📅</span><h3>活动日历</h3></div>
+        <div class="widget-body">
+          <div class="calendar-month">
+            <button class="cal-nav">‹</button>
+            <span style="font-size:14px;font-weight:500;color:var(--brown)">2025年 8月</span>
+            <button class="cal-nav">›</button>
+          </div>
+          <div class="cal-grid">
+            <div class="dow">日</div><div class="dow">一</div><div class="dow">二</div><div class="dow">三</div><div class="dow">四</div><div class="dow">五</div><div class="dow">六</div>
+            <div class="day other-month">29</div><div class="day other-month">30</div><div class="day other-month">31</div>
+            <div class="day">1</div><div class="day event">2</div><div class="day">3</div><div class="day">4</div>
+            <div class="day">5</div><div class="day event">6</div><div class="day">7</div>
+            <div class="day">8</div><div class="day">9</div><div class="day event">10</div><div class="day">11</div>
+            <div class="day">12</div><div class="day">13</div><div class="day">14</div>
+            <div class="day today">15</div><div class="day">16</div><div class="day event">17</div><div class="day">18</div>
+            <div class="day">19</div><div class="day">20</div><div class="day">21</div>
+            <div class="day event">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div>
+            <div class="day">26</div><div class="day">27</div><div class="day">28</div>
+            <div class="day event">29</div><div class="day">30</div><div class="day event">31</div>
+            <div class="day other-month">1</div>
+          </div>
+          <div class="event-list">
+            <div class="event-item"><div class="event-dot" style="background:var(--peach-dark)"></div><div class="event-date">8/15</div><div class="event-name">🏖️ 夏日海边节开始</div></div>
+            <div class="event-item"><div class="event-dot" style="background:var(--mint-dark)"></div><div class="event-date">8/22</div><div class="event-name">🎣 钓鱼锦标赛</div></div>
+            <div class="event-item"><div class="event-dot" style="background:var(--lavender)"></div><div class="event-date">8/31</div><div class="event-name">🎆 夏日祭典烟花晚会</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget">
+        <div class="widget-header"><span style="font-size:16px">👥</span><h3>人气角色</h3></div>
+        <div class="widget-body">
+          <div class="char-row" onclick="navigate('charDetail','sx')">
+            <div class="char-avatar" style="background:var(--peach-light)">🌸</div>
+            <div><div class="char-name">苏晓晨</div><div class="char-sub">花店老板 · 偏好鲜花类</div></div>
+            <div class="char-badge" style="background:var(--peach-light);color:var(--peach-dark)">♥ 热门</div>
+          </div>
+          <div class="char-row" onclick="navigate('charDetail','lm')">
+            <div class="char-avatar" style="background:var(--mint-light)">🌿</div>
+            <div><div class="char-name">林木木</div><div class="char-sub">农场顾问 · 偏好蔬果类</div></div>
+            <div class="char-badge" style="background:var(--mint-light);color:var(--mint-dark)">★ 推荐</div>
+          </div>
+          <div class="char-row" onclick="navigate('charDetail','yc')">
+            <div class="char-avatar" style="background:var(--lavender-light)">🔮</div>
+            <div><div class="char-name">叶夜辰</div><div class="char-sub">神秘商人 · 偏好稀有矿石</div></div>
+            <div class="char-badge" style="background:var(--lavender-light);color:var(--lavender-dark)">✦ 神秘</div>
+          </div>
+          <div class="char-row" onclick="navigate('charDetail','cx')">
+            <div class="char-avatar" style="background:var(--yellow-light)">⭐</div>
+            <div><div class="char-name">陈小厨</div><div class="char-sub">料理师傅 · 偏好食材类</div></div>
+            <div class="char-badge" style="background:var(--yellow-light);color:var(--yellow-dark)">🍴 美食</div>
+          </div>
+          <div style="margin-top:14px;text-align:center">
+            <a onclick="navigate('charList')" style="font-size:12px;color:var(--mint-dark);text-decoration:none;cursor:pointer">查看全部 42 位角色 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget">
+        <div class="widget-header"><span style="font-size:16px">🌾</span><h3>夏季作物效率榜</h3></div>
+        <div class="widget-body">
+          <div class="tier-row">
+            <div class="tier-label" style="background:#fde8df;color:#c0502a">S</div>
+            <div class="tier-icons">
+              <div class="tier-icon" style="background:var(--peach-light)" title="草莓">🍓</div>
+              <div class="tier-icon" style="background:var(--peach-light)" title="甜瓜">🍈</div>
+              <div class="tier-icon" style="background:var(--peach-light)" title="蓝莓">🫐</div>
+            </div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-label" style="background:#fef7d8;color:#9a7310">A</div>
+            <div class="tier-icons">
+              <div class="tier-icon" style="background:var(--yellow-light)">🍅</div>
+              <div class="tier-icon" style="background:var(--yellow-light)">🌽</div>
+              <div class="tier-icon" style="background:var(--yellow-light)">🍑</div>
+              <div class="tier-icon" style="background:var(--yellow-light)">🍇</div>
+            </div>
+          </div>
+          <div class="tier-row">
+            <div class="tier-label" style="background:var(--mint-light);color:var(--mint-dark)">B</div>
+            <div class="tier-icons">
+              <div class="tier-icon" style="background:var(--mint-light)">🥒</div>
+              <div class="tier-icon" style="background:var(--mint-light)">🎃</div>
+              <div class="tier-icon" style="background:var(--mint-light)">🫘</div>
+            </div>
+          </div>
+          <p style="font-size:11px;color:var(--text-muted);margin-top:12px;text-align:center">按每格地块季度净利润排名</p>
+        </div>
+      </div>
+
+      <div class="widget">
+        <div class="widget-header"><span style="font-size:16px">📢</span><h3>站内最新动态</h3></div>
+        <div class="widget-body">
+          <div class="update-item"><div class="update-date">2小时前</div><div class="update-title"><span class="update-badge" style="background:var(--peach-light);color:var(--peach-dark)">新增</span>夏日节沙堡任务详细图解</div></div>
+          <div class="update-item"><div class="update-date">昨天</div><div class="update-title"><span class="update-badge" style="background:var(--mint-light);color:var(--mint-dark)">修正</span>叶夜辰触发条件修正</div></div>
+          <div class="update-item"><div class="update-date">3天前</div><div class="update-title"><span class="update-badge" style="background:var(--lavender-light);color:var(--lavender-dark)">版本</span>v1.4.2 更新内容整理</div></div>
+          <div class="update-item"><div class="update-date">1周前</div><div class="update-title"><span class="update-badge" style="background:var(--yellow-light);color:var(--yellow-dark)">活动</span>烟花节全奖励获取攻略</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">由热爱心动小镇的玩家社区共同维护的非官方攻略站。<br>内容仅供参考，游戏数据以官方为准。<br><br>🌸 欢迎投稿与纠错</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('home')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('home')">农场攻略</a></li><li><a onclick="navigate('home')">任务流程</a></li><li><a onclick="navigate('home')">道具大全</a></li></ul></div>
+      <div><h4>工具</h4><ul><li><a>利润计算器</a></li><li><a>好感度追踪</a></li><li><a>活动日历</a></li><li><a>地图查看器</a></li><li><a>食谱查询</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li><li><a>投稿指南</a></li><li><a>版权声明</a></li><li><a>联系我们</a></li><li><a>加入社区</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站 · 非官方玩家社区 · 本站内容基于 CC BY-NC-SA 4.0 授权</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: CHARACTER LIST
+══════════════════════════════════════ -->
+<div class="page" id="page-charList">
+
+  <!-- HERO -->
+  <div class="char-page-hero">
+    <div class="char-page-hero-inner">
+      <div class="breadcrumb" style="padding:0 0 12px; max-width:none">
+        <a onclick="navigate('home')">🏡 首页</a>
+        <span class="sep">›</span>
+        <span>角色图鉴</span>
+      </div>
+      <h1>👥 角色图鉴</h1>
+      <p>心动小镇共有 42 位可互动居民，了解他们的喜好，提升好感度解锁专属剧情</p>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-bar-inner">
+      <span class="filter-label">职业</span>
+      <div class="filter-group" id="jobFilter">
+        <button class="filter-chip active" data-job="all">全部</button>
+        <button class="filter-chip" data-job="shop">商店</button>
+        <button class="filter-chip" data-job="farm">农业</button>
+        <button class="filter-chip" data-job="craft">手工</button>
+        <button class="filter-chip" data-job="mystery">神秘</button>
+        <button class="filter-chip" data-job="food">餐饮</button>
+        <button class="filter-chip" data-job="art">艺术</button>
+      </div>
+      <div class="filter-divider"></div>
+      <span class="filter-label">难度</span>
+      <div class="filter-group" id="diffFilter">
+        <button class="filter-chip active" data-diff="all">全部</button>
+        <button class="filter-chip" data-diff="easy">易攻略</button>
+        <button class="filter-chip" data-diff="mid">普通</button>
+        <button class="filter-chip" data-diff="hard">困难</button>
+      </div>
+      <div class="char-search">
+        <span>🔍</span>
+        <input type="text" placeholder="搜索角色名…" id="charSearchInput" oninput="filterChars()">
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAR GRID -->
+  <div class="char-list-body">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <p style="font-size:13px;color:var(--text-muted)">共显示 <strong id="charCount" style="color:var(--brown)">12</strong> 位角色</p>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span style="font-size:12px;color:var(--text-muted)">排序：</span>
+        <select style="font-size:12px;border:1.5px solid var(--border);border-radius:10px;padding:5px 10px;background:var(--white);color:var(--brown);font-family:'Noto Sans SC',sans-serif;cursor:pointer" onchange="filterChars()">
+          <option>人气优先</option>
+          <option>好感度易</option>
+          <option>名字排序</option>
+        </select>
+      </div>
+    </div>
+    <div class="char-grid" id="charGrid"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">由热爱心动小镇的玩家社区共同维护的非官方攻略站。<br>内容仅供参考，游戏数据以官方为准。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('home')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('home')">农场攻略</a></li></ul></div>
+      <div><h4>工具</h4><ul><li><a>好感度追踪</a></li><li><a>活动日历</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li><li><a>投稿指南</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: CHARACTER DETAIL
+══════════════════════════════════════ -->
+<div class="page" id="page-charDetail">
+  <div id="charDetailContent"></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="search-modal">
+    <div class="search-modal-top">
+      <span style="font-size:18px">🔍</span>
+      <input type="text" placeholder="搜索角色、道具、任务……" id="searchInput" oninput="renderSearch(this.value)">
+      <button style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--text-muted)" onclick="document.getElementById('searchOverlay').classList.remove('show')">✕</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">输入关键词开始搜索…</div>
+    </div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+/* ══════════════════════════════════════
+   CHARACTER DATA
+══════════════════════════════════════ */
+const CHARS = [
+  { id:'sx', name:'苏晓晨', title:'花店老板', icon:'🌸', bg:'#fde8df', job:'shop', diff:'easy', tags:['花卉达人','浪漫系'], tagColors:['tag-peach','tag-peach'], heartLevel:3, hearts:8, label:'热门', labelBg:'#fde8df', labelColor:'#e07a55', liked:false,
+    bio:'苏晓晨在镇中心经营着一家充满香气的花店，对每一朵花都有独特的见解。她性格温柔细腻，总是用鲜花表达心意，是小镇最受欢迎的姑娘。',
+    gifts: [
+      { icon:'🌻', name:'向日葵', effect:'大喜欢', effectColor:'#fde8df', effectText:'#e07a55', pts:'+80' },
+      { icon:'🌹', name:'红玫瑰', effect:'喜欢', effectColor:'#fde8df', effectText:'#e07a55', pts:'+60' },
+      { icon:'🍰', name:'手工蛋糕', effect:'喜欢', effectColor:'#fde8df', effectText:'#e07a55', pts:'+50' },
+      { icon:'🫧', name:'香皂花', effect:'喜欢', effectColor:'#fde8df', effectText:'#e07a55', pts:'+45' },
+      { icon:'🧅', name:'洋葱', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-30' },
+      { icon:'🐛', name:'虫子标本', effect:'非常讨厌', effectColor:'#fde8df', effectText:'#c0392b', pts:'-60' },
+    ],
+    schedule: [
+      { day:'周一', slots:['花店 7-12','市场 14-17','家中 18+'] },
+      { day:'周二', slots:['花店 7-12','公园 13-15','花店 16-18'] },
+      { day:'周三', slots:['花店 7-11','进货 12-14','花店 15-19'] },
+      { day:'周四', slots:['花店 7-12','图书馆 13','花店 16+'] },
+      { day:'周五', slots:['花店 7-12','镇广场 13','花店 17+'] },
+      { day:'周六', slots:['集市 8-14','海边 15-17','家中 18+'] },
+      { day:'周日', slots:['家中休息','公园 11-14','家中 15+'] },
+    ],
+    events: [
+      { level:2, title:'初识', badge:'好感2心', badgeBg:'#fde8df', badgeColor:'#e07a55', locked:false, desc:'在花店购买3次后触发。苏晓晨会向你介绍每种花的花语，并送给你一束向日葵作为礼物。' },
+      { level:4, title:'共赏花海', badge:'好感4心', badgeBg:'#fde8df', badgeColor:'#e07a55', locked:false, desc:'春季花卉节期间，在镇北花田找到苏晓晨，她会邀请你一起拍照，解锁专属相框道具。' },
+      { level:6, title:'秘密花园', badge:'好感6心', badgeBg:'#fde8df', badgeColor:'#e07a55', locked:false, desc:'苏晓晨带你参观她的私人温室，讲述与花店的渊源故事，获得稀有种子「月光花」。' },
+      { level:8, title:'心意花束', badge:'好感8心', badgeBg:'var(--peach)', badgeColor:'white', locked:true, desc:'触发最终心动事件，苏晓晨亲手为你编织专属花束，解锁伴侣系统。需要在告白前先完成主线第五章。' },
+    ],
+    tips:['每天向她购买花卉可+5好感，是最稳定的日常增长方式','周六上午在集市可发现她以更低价格出售稀有鲜花','送礼请避开周三，她进货日心情较差，礼物加成减半','雨天在花店与她对话会触发隐藏台词，有机率+额外好感','主线第三章完成后，她的店铺会新增高级花卉商品'],
+    info: { 生日:'春季第14天', 星座:'双鱼座', 爱好:'插花·读诗·早起散步', 住所:'镇中心花店二楼', 家乡:'远山村', 梦想:'开一家世界最美的花店' },
+    related: [
+      { id:'lm', name:'林木木', rel:'青梅竹马', icon:'🌿', bg:'#c8ede5' },
+      { id:'cx', name:'陈小厨', rel:'好友', icon:'⭐', bg:'#fef7d8' },
+    ]
+  },
+  { id:'lm', name:'林木木', title:'农场顾问', icon:'🌿', bg:'#c8ede5', job:'farm', diff:'easy', tags:['农业专家','开朗系'], tagColors:['tag-mint','tag-mint'], heartLevel:2, hearts:6, label:'推荐', labelBg:'#c8ede5', labelColor:'#3d9e87', liked:false,
+    bio:'林木木是镇上的农业顾问，对各种作物了如指掌。他性格开朗，总是乐于助人，是新居民最好的向导。他梦想着将心动小镇打造成最富饶的农业小镇。',
+    gifts: [
+      { icon:'🍎', name:'苹果', effect:'大喜欢', effectColor:'#c8ede5', effectText:'#3d9e87', pts:'+80' },
+      { icon:'🫐', name:'蓝莓', effect:'喜欢', effectColor:'#c8ede5', effectText:'#3d9e87', pts:'+60' },
+      { icon:'🌽', name:'玉米', effect:'喜欢', effectColor:'#c8ede5', effectText:'#3d9e87', pts:'+50' },
+      { icon:'🥕', name:'胡萝卜', effect:'喜欢', effectColor:'#c8ede5', effectText:'#3d9e87', pts:'+45' },
+      { icon:'💐', name:'人造花', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-30' },
+      { icon:'🍬', name:'糖果', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-25' },
+    ],
+    schedule: [
+      { day:'周一', slots:['农田 6-10','顾问室 11-16','家中 17+'] },
+      { day:'周二', slots:['农田 6-10','镇政府 11-14','农田 15+'] },
+      { day:'周三', slots:['农田 6-12','市场巡逻 13','家中 18+'] },
+      { day:'周四', slots:['农田 6-10','讲习所 11-15','家中 16+'] },
+      { day:'周五', slots:['农田 6-10','顾问室 11-15','小酒馆 18+'] },
+      { day:'周六', slots:['集市 7-12','农田 13-16','家中 17+'] },
+      { day:'周日', slots:['家中 6-9','远足 10-14','家中 15+'] },
+    ],
+    events: [
+      { level:2, title:'农田导览', badge:'好感2心', badgeBg:'#c8ede5', badgeColor:'#3d9e87', locked:false, desc:'游戏第三天自动触发。林木木带你参观农田，并教你辨别优质土壤，赠送初级农具套装。' },
+      { level:4, title:'丰收节的秘密', badge:'好感4心', badgeBg:'#c8ede5', badgeColor:'#3d9e87', locked:false, desc:'秋季丰收节期间在集市找到他，他会传授一个让作物产量+20%的古老种植秘法。' },
+      { level:6, title:'旱灾危机', badge:'好感6心', badgeBg:'#c8ede5', badgeColor:'#3d9e87', locked:false, desc:'夏末随机触发，协助林木木找到地下水源，解锁自动灌溉设施蓝图，关系深度提升。' },
+      { level:8, title:'共耕梦想田', badge:'好感8心', badgeBg:'var(--mint)', badgeColor:'white', locked:true, desc:'最终心动事件，两人共同规划并建造「梦想农场」，解锁合作农场系统与专属剧情结局。' },
+    ],
+    tips:['赠送当季蔬果可获双倍好感加成，务必根据季节调整礼物','每天早上6-10点在农田可找到他，有随机赠礼对话机会','秋季前完成「灌溉改造」支线，他的好感增速会提升15%','讨厌甜食类和人工制品，切勿送糖果或工艺品','他会免费帮你鉴定作物品质，利用此机会顺便触发好感对话'],
+    info: { 生日:'夏季第3天', 星座:'金牛座', 爱好:'耕作·登山·品茶', 住所:'农场顾问室', 家乡:'绿野镇', 梦想:'让小镇实现粮食自给自足' },
+    related: [
+      { id:'sx', name:'苏晓晨', rel:'青梅竹马', icon:'🌸', bg:'#fde8df' },
+      { id:'yc', name:'叶夜辰', rel:'竞争对手', icon:'🔮', bg:'#ede9fc' },
+    ]
+  },
+  { id:'yc', name:'叶夜辰', title:'神秘商人', icon:'🔮', bg:'#ede9fc', job:'mystery', diff:'hard', tags:['神秘系','稀有道具'], tagColors:['tag-lavender','tag-lavender'], heartLevel:1, hearts:3, label:'神秘', labelBg:'#ede9fc', labelColor:'#6b4fc9', liked:false,
+    bio:'叶夜辰行踪飘忽不定，经营着一家只在满月之夜开张的神秘商店。没有人知道他从哪里来，也没有人知道他真正的目的。据说他掌握着关于小镇古老传说的秘密。',
+    gifts: [
+      { icon:'💎', name:'星光水晶', effect:'大喜欢', effectColor:'#ede9fc', effectText:'#6b4fc9', pts:'+100' },
+      { icon:'🌙', name:'月石', effect:'大喜欢', effectColor:'#ede9fc', effectText:'#6b4fc9', pts:'+90' },
+      { icon:'🦋', name:'蓝蝴蝶标本', effect:'喜欢', effectColor:'#ede9fc', effectText:'#6b4fc9', pts:'+55' },
+      { icon:'📜', name:'古老卷轴', effect:'喜欢', effectColor:'#ede9fc', effectText:'#6b4fc9', pts:'+50' },
+      { icon:'🍔', name:'汉堡', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-40' },
+      { icon:'🌼', name:'普通野花', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-20' },
+    ],
+    schedule: [
+      { day:'周一', slots:['神出鬼没','未知地点','满月现身'] },
+      { day:'周二', slots:['古迹遗址','见或不见','深夜酒馆'] },
+      { day:'周三', slots:['图书馆地下','古籍室','未知'] },
+      { day:'周四', slots:['未知','洞窟入口','深夜广场'] },
+      { day:'周五', slots:['神秘商店','出现于塔','夜市'] },
+      { day:'周六', slots:['满月特卖','洞窟深处','消失'] },
+      { day:'周日', slots:['完全隐身','无法找到','无法找到'] },
+    ],
+    events: [
+      { level:2, title:'初遇', badge:'好感2心', badgeBg:'#ede9fc', badgeColor:'#6b4fc9', locked:false, desc:'满月夜在镇广场独自闲逛时触发。叶夜辰主动上前，用一枚古币换走你的一件道具，留下谜题。' },
+      { level:4, title:'古老地图', badge:'好感4心', badgeBg:'#ede9fc', badgeColor:'#6b4fc9', locked:true, desc:'需要先收集3种不同矿石。他会向你展示一张古老地图，指向小镇北方的封印遗址。' },
+      { level:6, title:'封印解除', badge:'好感6心', badgeBg:'#ede9fc', badgeColor:'#6b4fc9', locked:true, desc:'完成遗址探索后触发，叶夜辰终于吐露自己来镇上的真实目的，并请求你的协助。' },
+      { level:8, title:'命运交织', badge:'好感8心', badgeBg:'var(--lavender-dark)', badgeColor:'white', locked:true, desc:'攻略难度极高。需完成所有遗址支线，并在特定满月之夜选择正确对话选项。结局震撼全场。' },
+    ],
+    tips:['只能在满月夜（每月第15天夜晚）稳定找到他，务必把握','赠品价值越高越加分，普通礼物可能触发负面反应','完成「遗址探索」支线是提升好感的关键路线','他出现的地点有随机性，推荐在夜间的广场、图书馆、洞窟入口守候','攻略难度为全角色最高，建议先达成其他角色满心再挑战'],
+    info: { 生日:'未知', 星座:'未知', 爱好:'收藏古物·夜行·炼金', 住所:'不固定', 家乡:'未知', 梦想:'解开小镇的古老封印' },
+    related: [
+      { id:'lm', name:'林木木', rel:'竞争对手', icon:'🌿', bg:'#c8ede5' },
+    ]
+  },
+  { id:'cx', name:'陈小厨', title:'料理师傅', icon:'⭐', bg:'#fef7d8', job:'food', diff:'easy', tags:['美食家','活力系'], tagColors:['tag-yellow','tag-yellow'], heartLevel:4, hearts:7, label:'美食', labelBg:'#fef7d8', labelColor:'#9a7310', liked:false,
+    bio:'陈小厨在镇上经营着人气最旺的小食堂，他厨艺高超，擅长将最普通的食材变成令人难忘的美味。性格热情开朗，是大家公认的开心果。',
+    gifts: [
+      { icon:'🍄', name:'珍稀菌菇', effect:'大喜欢', effectColor:'#fef7d8', effectText:'#9a7310', pts:'+80' },
+      { icon:'🐟', name:'大型鱼类', effect:'喜欢', effectColor:'#fef7d8', effectText:'#9a7310', pts:'+60' },
+      { icon:'🧄', name:'黑蒜', effect:'喜欢', effectColor:'#fef7d8', effectText:'#9a7310', pts:'+55' },
+      { icon:'🫒', name:'橄榄油', effect:'喜欢', effectColor:'#fef7d8', effectText:'#9a7310', pts:'+50' },
+      { icon:'🍭', name:'棒棒糖', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-25' },
+      { icon:'🥫', name:'罐头食品', effect:'非常讨厌', effectColor:'#fde8df', effectText:'#c0392b', pts:'-60' },
+    ],
+    schedule: [
+      { day:'周一', slots:['食堂 6-14','市场采购 15','食堂 17+'] },
+      { day:'周二', slots:['食堂 6-14','料理教室 15','家中 19+'] },
+      { day:'周三', slots:['早市 5-9','食堂 10-20','家中 20+'] },
+      { day:'周四', slots:['食堂 6-14','钓鱼 15-18','食堂 19+'] },
+      { day:'周五', slots:['食堂 6-14','采购 15-17','广场 18+'] },
+      { day:'周六', slots:['食堂 6-16','美食节 17+',''] },
+      { day:'周日', slots:['家中休息','公园烧烤 12','食堂 16+'] },
+    ],
+    events: [
+      { level:2, title:'试吃邀请', badge:'好感2心', badgeBg:'#fef7d8', badgeColor:'#9a7310', locked:false, desc:'第一次光顾食堂后触发。陈小厨邀请你试吃新菜，并传授一道简单食谱作为感谢。' },
+      { level:4, title:'秘方争夺', badge:'好感4心', badgeBg:'#fef7d8', badgeColor:'#9a7310', locked:false, desc:'外来厨师挑战他的招牌菜，你选择帮他寻找秘方食材，关系大幅提升，获得专属餐具套装。' },
+      { level:6, title:'料理大赛', badge:'好感6心', badgeBg:'#fef7d8', badgeColor:'#9a7310', locked:false, desc:'镇年度烹饪大赛，他邀请你担任助手，一起研发参赛菜品，解锁合作料理系统。' },
+      { level:8, title:'私家料理', badge:'好感8心', badgeBg:'var(--yellow-dark)', badgeColor:'white', locked:true, desc:'陈小厨为你一人准备了一场私密烛光晚宴，所有菜肴都是你最爱的口味，解锁专属家园摆件。' },
+    ],
+    tips:['每天去食堂用餐可稳定+3好感，且有概率触发特殊对话','赠礼以新鲜食材为主，尤其是钓鱼获得的大型鱼类效果绝佳','周日公园烧烤是发现隐藏剧情的好时机','食堂推出季节特供菜时前去品尝，会触发专属好感对话','绝对不要送任何加工食品或罐头，他会当场扔掉并扣好感'],
+    info: { 生日:'秋季第22天', 星座:'狮子座', 爱好:'烹饪研究·钓鱼·美食探店', 住所:'镇南食堂后院', 家乡:'丰收镇', 梦想:'成为全国最有名的乡村厨师' },
+    related: [
+      { id:'sx', name:'苏晓晨', rel:'好友', icon:'🌸', bg:'#fde8df' },
+    ]
+  },
+  { id:'wm', name:'王明月', title:'镇图书馆馆长', icon:'📚', bg:'#e8f0ff', job:'art', diff:'mid', tags:['学者型','沉稳系'], tagColors:['tag-lavender','tag-mint'], heartLevel:2, hearts:5, label:'', labelBg:'', labelColor:'', liked:false,
+    bio:'王明月是心动小镇历史最悠久的图书馆的馆长，博学多才却不善言辞。她痴迷于整理小镇的历史文献，藏书阁里的每一本书都是她的宝贝。',
+    gifts: [
+      { icon:'📖', name:'古典文学书籍', effect:'大喜欢', effectColor:'#e8f0ff', effectText:'#3355aa', pts:'+80' },
+      { icon:'🖊️', name:'精品钢笔', effect:'喜欢', effectColor:'#e8f0ff', effectText:'#3355aa', pts:'+60' },
+      { icon:'🍵', name:'茉莉花茶', effect:'喜欢', effectColor:'#e8f0ff', effectText:'#3355aa', pts:'+55' },
+      { icon:'🔖', name:'手工书签', effect:'普通', effectColor:'#e8e8e8', effectText:'#888', pts:'+20' },
+      { icon:'🎮', name:'游戏机', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-35' },
+      { icon:'🎵', name:'流行音乐碟', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-20' },
+    ],
+    schedule: [
+      { day:'周一', slots:['图书馆 8-18','书房 19+',''] },
+      { day:'周二', slots:['图书馆 8-18','书房 19+',''] },
+      { day:'周三', slots:['图书馆 8-12','采购书籍 13','图书馆 15+'] },
+      { day:'周四', slots:['图书馆 8-18','讲座 19+',''] },
+      { day:'周五', slots:['图书馆 8-18','书房 19+',''] },
+      { day:'周六', slots:['图书馆 9-14','公园散步 15','家中 17+'] },
+      { day:'周日', slots:['家中 7-10','教堂 11-12','家中 13+'] },
+    ],
+    events: [
+      { level:2, title:'书单推荐', badge:'好感2心', badgeBg:'#e8f0ff', badgeColor:'#3355aa', locked:false, desc:'借书3次后触发。王明月主动为你推荐一份书单，涵盖小镇历史与农业知识，获得阅读速度加成。' },
+      { level:4, title:'珍本发现', badge:'好感4心', badgeBg:'#e8f0ff', badgeColor:'#3355aa', locked:false, desc:'在图书馆打扫时意外找到一本封存的秘籍，王明月激动不已，带你一起解读其中的谜团。' },
+      { level:6, title:'夜读时光', badge:'好感6心', badgeBg:'#e8f0ff', badgeColor:'#3355aa', locked:true, desc:'图书馆闭馆后，她邀请你留下来一起研读古籍，分享各自对小镇历史的理解，关系质变。' },
+      { level:8, title:'永久馆藏', badge:'好感8心', badgeBg:'#3355aa', badgeColor:'white', locked:true, desc:'她决定将你的名字永久刻入图书馆的荣誉墙，并将珍藏多年的初版古书赠予你。解锁图书馆VIP区域。' },
+    ],
+    tips:['每天去图书馆借一本书，积少成多提升好感','她不喜欢嘈杂，对话时选择关于书籍和历史的选项','送书籍类礼物是最稳妥的选择，在旅行商人处购买古籍效果最佳','每周四晚上的知识讲座参加可获得固定好感加成','避免在她整理书籍时打扰，否则会触发负面情绪'],
+    info: { 生日:'冬季第8天', 星座:'处女座', 爱好:'读书·整理文献·写诗', 住所:'图书馆二楼', 家乡:'文渊城', 梦想:'将小镇历史整理成一部完整典籍' },
+    related: [
+      { id:'yc', name:'叶夜辰', rel:'文献伙伴', icon:'🔮', bg:'#ede9fc' },
+    ]
+  },
+  { id:'zt', name:'赵铁匠', title:'铁铺老板', icon:'⚒️', bg:'#ffe8d0', job:'craft', diff:'mid', tags:['工艺达人','豪爽系'], tagColors:['tag-peach','tag-yellow'], heartLevel:3, hearts:6, label:'', labelBg:'', labelColor:'', liked:false,
+    bio:'赵铁匠是三代铁匠家族的传人，技艺精湛。他外表粗犷，内心却极为细腻，每一件铁器都是艺术品。他对新科技持怀疑态度，坚信手工的温度是机器无法替代的。',
+    gifts: [
+      { icon:'⛏️', name:'优质矿石', effect:'大喜欢', effectColor:'#ffe8d0', effectText:'#aa5500', pts:'+80' },
+      { icon:'🍺', name:'麦芽啤酒', effect:'喜欢', effectColor:'#ffe8d0', effectText:'#aa5500', pts:'+65' },
+      { icon:'🥩', name:'烤肉', effect:'喜欢', effectColor:'#ffe8d0', effectText:'#aa5500', pts:'+55' },
+      { icon:'🔩', name:'精钢螺栓', effect:'喜欢', effectColor:'#ffe8d0', effectText:'#aa5500', pts:'+45' },
+      { icon:'💄', name:'化妆品', effect:'尴尬', effectColor:'#e8e8e8', effectText:'#888', pts:'-10' },
+      { icon:'🤖', name:'电子玩具', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-35' },
+    ],
+    schedule: [
+      { day:'周一', slots:['铁铺 7-18','小酒馆 19+',''] },
+      { day:'周二', slots:['铁铺 7-18','采矿 进货','铁铺 16+'] },
+      { day:'周三', slots:['铁铺 7-18','广场 19+',''] },
+      { day:'周四', slots:['铁铺 7-18','小酒馆 19+',''] },
+      { day:'周五', slots:['铁铺 7-18','比武场 19+',''] },
+      { day:'周六', slots:['铁铺 7-14','钓鱼 15-18','家中 19+'] },
+      { day:'周日', slots:['家中 7-11','镇市场 12','小酒馆 18+'] },
+    ],
+    events: [
+      { level:2, title:'入门学徒', badge:'好感2心', badgeBg:'#ffe8d0', badgeColor:'#aa5500', locked:false, desc:'请他修理一件工具后触发。他满意于你对工艺品的尊重态度，提出教你基础锻造知识。' },
+      { level:4, title:'传家之宝', badge:'好感4心', badgeBg:'#ffe8d0', badgeColor:'#aa5500', locked:false, desc:'陪他去矿洞寻找特殊矿石，他向你讲述家族铁铺三代的历史故事，获得中级锻造图纸。' },
+      { level:6, title:'订制铠甲', badge:'好感6心', badgeBg:'#ffe8d0', badgeColor:'#aa5500', locked:true, desc:'他决定为你打造一件专属装备，整个制作过程你需要协助搜集材料，完成后获得绝版装备。' },
+      { level:8, title:'薪火相传', badge:'好感8心', badgeBg:'#aa5500', badgeColor:'white', locked:true, desc:'赵铁匠传授家族秘传的「天火锻造法」，并正式将你视为传人，解锁高级锻造台。' },
+    ],
+    tips:['帮他采集矿石是提升好感最快的方式','每天早上去铁铺打招呼即可+1好感，简单高效','周六钓鱼时他心情最好，送礼效果×1.5','避免谈论电子产品或现代机械，他会不高兴','参加每月一次的比武大会并取胜，可获得大量好感加成'],
+    info: { 生日:'夏季第18天', 星座:'摩羯座', 爱好:'锻造·钓鱼·喝酒', 住所:'镇西铁铺', 家乡:'铁砧山', 梦想:'锻造出一把传世神兵' },
+    related: [
+      { id:'cx', name:'陈小厨', rel:'酒友', icon:'⭐', bg:'#fef7d8' },
+    ]
+  },
+  { id:'mm', name:'穆慕雪', title:'镇长秘书', icon:'❄️', bg:'#e0f0ff', job:'shop', diff:'hard', tags:['高冷系','效率至上'], tagColors:['tag-lavender','tag-mint'], heartLevel:1, hearts:2, label:'高冷', labelBg:'#e0f0ff', labelColor:'#2266aa', liked:false,
+    bio:'穆慕雪是心动小镇有史以来最年轻的镇长秘书，行事雷厉风行，效率极高。她表面冷淡，对工作以外的事情几乎不感兴趣，但据小镇老人说，她其实内心温柔如雪。',
+    gifts: [
+      { icon:'🖊️', name:'限量钢笔', effect:'大喜欢', effectColor:'#e0f0ff', effectText:'#2266aa', pts:'+90' },
+      { icon:'📋', name:'精品记事本', effect:'喜欢', effectColor:'#e0f0ff', effectText:'#2266aa', pts:'+65' },
+      { icon:'☕', name:'黑咖啡', effect:'喜欢', effectColor:'#e0f0ff', effectText:'#2266aa', pts:'+55' },
+      { icon:'🍫', name:'黑巧克力', effect:'普通', effectColor:'#e8e8e8', effectText:'#888', pts:'+25' },
+      { icon:'🧸', name:'毛绒玩具', effect:'尴尬', effectColor:'#e8e8e8', effectText:'#888', pts:'+5' },
+      { icon:'🌈', name:'彩虹糖', effect:'讨厌', effectColor:'#fde8df', effectText:'#c0392b', pts:'-45' },
+    ],
+    schedule: [
+      { day:'周一', slots:['镇政府 8-18','家中 19+',''] },
+      { day:'周二', slots:['镇政府 8-18','咖啡馆 19','家中 20+'] },
+      { day:'周三', slots:['镇政府 8-18','图书馆 19','家中 20+'] },
+      { day:'周四', slots:['镇政府 8-18','家中 19+',''] },
+      { day:'周五', slots:['镇政府 8-18','加班 19-21','家中 22+'] },
+      { day:'周六', slots:['家中 7-9','镇政府 10-14','咖啡馆 15+'] },
+      { day:'周日', slots:['家中 7-11','公园散步 12','家中 13+'] },
+    ],
+    events: [
+      { level:2, title:'第一印象', badge:'好感2心', badgeBg:'#e0f0ff', badgeColor:'#2266aa', locked:false, desc:'完成第一个镇政府任务后触发。穆慕雪对你的效率给出简短的肯定，这已是她难得的表扬。' },
+      { level:4, title:'加班夜谈', badge:'好感4心', badgeBg:'#e0f0ff', badgeColor:'#2266aa', locked:true, desc:'需要先帮助镇政府完成5个任务。某个周五加班时，你带去一杯黑咖啡，她终于多说了几句话。' },
+      { level:6, title:'雪夜秘密', badge:'好感6心', badgeBg:'#e0f0ff', badgeColor:'#2266aa', locked:true, desc:'冬季大雪封路时，你在咖啡馆偶遇落单的她，一夜长谈揭开她高冷外表下的真实自我。' },
+      { level:8, title:'融化的雪', badge:'好感8心', badgeBg:'#2266aa', badgeColor:'white', locked:true, desc:'全游戏最难攻略结局之一。需要完成所有镇政府支线且从不失信承诺，解锁她独家BGM与专属场景。' },
+    ],
+    tips:['参加所有镇政府发布的任务并高分完成，是最可靠的好感路线','她不喜欢可爱风格的礼物，请选择高档文具或功能性物品','平时不要太主动搭话，等她先开口的对话选项好感更高','每周二咖啡馆是见她的好机会，可以不经意地偶遇','攻略极度考验耐心，建议前期专注支线任务而非正面突破'],
+    info: { 生日:'冬季第1天', 星座:'天蝎座', 爱好:'整理档案·喝咖啡·清晨跑步', 住所:'镇政府附近公寓', 家乡:'雪原城', 梦想:'让心动小镇成为模范行政示范镇' },
+    related: [
+      { id:'wm', name:'王明月', rel:'同事', icon:'📚', bg:'#e8f0ff' },
+    ]
+  },
+  { id:'hh', name:'何欢欢', title:'镇上的音乐老师', icon:'🎵', bg:'#fff0e0', job:'art', diff:'easy', tags:['活泼系','音乐达人'], tagColors:['tag-yellow','tag-peach'], heartLevel:5, hearts:9, label:'活泼', labelBg:'#fff0e0', labelColor:'#cc7700', liked:false,
+    bio:'何欢欢是个充满活力的音乐老师，总是哼着歌出现在镇上。她热爱一切与音乐有关的事物，周末还会在镇广场举办免费音乐会，是镇上人气最旺的老师之一。',
+    gifts: [
+      { icon:'🎸', name:'手工吉他弦', effect:'大喜欢', effectColor:'#fff0e0', effectText:'#cc7700', pts:'+80' },
+      { icon:'🎵', name:'限定黑胶唱片', effect:'大喜欢', effectColor:'#fff0e0', effectText:'#cc7700', pts:'+75' },
+      { icon:'🍊', name:'橙子', effect:'喜欢', effectColor:'#fff0e0', effectText:'#cc7700', pts:'+50' },
+      { icon:'🧃', name:'果汁', effect:'喜欢', effectColor:'#fff0e0', effectText:'#cc7700', pts:'+45' },
+      { icon:'📚', name:'厚重教科书', effect:'不喜欢', effectColor:'#e8e8e8', effectText:'#888', pts:'-20' },
+      { icon:'🥦', name:'苦瓜', effect:'讨厌', effectColor:'#e8e8e8', effectText:'#888', pts:'-30' },
+    ],
+    schedule: [
+      { day:'周一', slots:['音乐教室 8-15','广场练习 16','家中 18+'] },
+      { day:'周二', slots:['音乐教室 8-15','乐器行 16','家中 18+'] },
+      { day:'周三', slots:['音乐教室 8-15','咖啡馆 16','广场 19+'] },
+      { day:'周四', slots:['音乐教室 8-15','排练 16-18','家中 19+'] },
+      { day:'周五', slots:['音乐教室 8-15','广场排练 16','夜市 19+'] },
+      { day:'周六', slots:['广场音乐会 10-14','粉丝互动 15','家中 17+'] },
+      { day:'周日', slots:['家中 7-10','集市 11-13','家中 14+'] },
+    ],
+    events: [
+      { level:2, title:'音乐课体验', badge:'好感2心', badgeBg:'#fff0e0', badgeColor:'#cc7700', locked:false, desc:'参加一次她的免费体验课后触发。何欢欢称赞你有音乐天赋，赠送一首专属小曲（家园BGM解锁）。' },
+      { level:4, title:'走调风波', badge:'好感4心', badgeBg:'#fff0e0', badgeColor:'#cc7700', locked:false, desc:'帮她寻找走失的吉他，找回后她感激万分，演奏了一曲独家创作，你成为第一个听众。' },
+      { level:6, title:'二重奏', badge:'好感6心', badgeBg:'#fff0e0', badgeColor:'#cc7700', locked:false, desc:'她邀请你作为嘉宾参加周六音乐会，共同表演一首二重奏，是全年最温馨的剧情之一。' },
+      { level:8, title:'为你而唱', badge:'好感8心', badgeBg:'#cc7700', badgeColor:'white', locked:true, desc:'何欢欢创作了一首以你为主题的歌曲，在月光下的广场为你首演，解锁专属家园音乐播放器。' },
+    ],
+    tips:['参加每周六的广场音乐会必定触发对话并+好感','她很容易攻略，普通礼物+日常互动即可稳定推进','乐器相关的礼物效果最佳，去乐器行购买专属礼品','避免送苦味食物，她非常挑食','被她点名参加音乐课时务必参加，拒绝会扣好感'],
+    info: { 生日:'春季第28天', 星座:'射手座', 爱好:'弹吉他·听音乐·户外野餐', 住所:'音乐教室旁小屋', 家乡:'音符湖', 梦想:'举办全国巡回音乐会' },
+    related: [
+      { id:'sx', name:'苏晓晨', rel:'好友', icon:'🌸', bg:'#fde8df' },
+      { id:'cx', name:'陈小厨', rel:'邻居', icon:'⭐', bg:'#fef7d8' },
+    ]
+  },
+  { id:'fq', name:'方青青', title:'草药师', icon:'🌿', bg:'#e0fce8', job:'craft', diff:'mid', tags:['治愈系','神秘草药'], tagColors:['tag-mint','tag-lavender'], heartLevel:2, hearts:4, label:'', labelBg:'', labelColor:'', liked:false,
+    bio:'方青青在镇郊的小木屋里经营着一家草药铺，精通各种植物的药性。她说话温柔缓慢，总是带着淡淡的草木清香。许多镇民都来找她寻求偏方与慰藉。',
+    gifts:[{icon:'🌿',name:'稀有药草',effect:'大喜欢',effectColor:'#e0fce8',effectText:'#1a7a40',pts:'+85'},{icon:'🍄',name:'菌菇',effect:'喜欢',effectColor:'#e0fce8',effectText:'#1a7a40',pts:'+55'},{icon:'🌸',name:'樱花',effect:'喜欢',effectColor:'#e0fce8',effectText:'#1a7a40',pts:'+45'},{icon:'🎁',name:'精美礼盒',effect:'普通',effectColor:'#e8e8e8',effectText:'#888',pts:'+20'},{icon:'🍔',name:'油腻快餐',effect:'讨厌',effectColor:'#e8e8e8',effectText:'#888',pts:'-40'},{icon:'🚬',name:'烟草',effect:'非常讨厌',effectColor:'#fde8df',effectText:'#c0392b',pts:'-80'}],
+    schedule:[{day:'周一',slots:['草药铺 7-15','山林采药 15','家中 18+']},{day:'周二',slots:['草药铺 7-15','炼药 16-19','家中 20+']},{day:'周三',slots:['草药铺 7-15','山林 15','家中 19+']},{day:'周四',slots:['草药铺 7-15','市场 16','家中 18+']},{day:'周五',slots:['草药铺 7-15','炼药 16-19','家中 20+']},{day:'周六',slots:['山林 6-10','草药铺 11-15','家中 17+']},{day:'周日',slots:['家中 7-11','公园 12','草药铺 15+']}],
+    events:[{level:2,title:'草药入门',badge:'好感2心',badgeBg:'#e0fce8',badgeColor:'#1a7a40',locked:false,desc:'购买3次草药后触发。她教你辨认5种常见药草，获得采药技能和背包药草格扩展。'},{level:4,title:'山林探秘',badge:'好感4心',badgeBg:'#e0fce8',badgeColor:'#1a7a40',locked:false,desc:'陪她深入山林寻找传说中的「长生草」，途中遭遇险情，你的帮助让她彻底打开心扉。'},{level:6,title:'炼制秘药',badge:'好感6心',badgeBg:'#e0fce8',badgeColor:'#1a7a40',locked:true,desc:'她决定传授家传秘药的配方，协助炼制过程中两人的默契达到新高度，解锁高级炼药台。'},{level:8,title:'永恒草园',badge:'好感8心',badgeBg:'#1a7a40',badgeColor:'white',locked:true,desc:'共同在她的木屋后种下一片专属草园，每种草药都有专属故事，解锁永久药效加成与专属结局。'}],
+    tips:['帮她采集山林中的野生草药是最快提升好感的方式','周六早晨在山林可以一起采药，有大量对话机会','她的草药可以制作高级料理和药剂，维持购买关系很重要','不要在她面前提到农药或化学物品','草药铺里有隐藏对话，每天细心查看她的药架可触发'],
+    info:{生日:'春季第7天',星座:'天秤座',爱好:'采药·炼制·冥想',住所:'镇郊小木屋',家乡:'药谷村',梦想:'编写一部完整的草药大全'},
+    related:[{id:'wm',name:'王明月',rel:'文献合作',icon:'📚',bg:'#e8f0ff'}]
+  },
+  { id:'tl', name:'唐乐乐', title:'流浪画家', icon:'🎨', bg:'#ffeef5', job:'art', diff:'mid', tags:['自由派','艺术系'], tagColors:['tag-peach','tag-lavender'], heartLevel:3, hearts:5, label:'', labelBg:'', labelColor:'', liked:false,
+    bio:'唐乐乐是一位四处游历的画家，最近定居心动小镇，被这里的风景所深深吸引。她的画作充满奇思妙想，镇上的每一处角落都曾是她的灵感来源。',
+    gifts:[{icon:'🖌️',name:'手工颜料',effect:'大喜欢',effectColor:'#ffeef5',effectText:'#cc3388',pts:'+85'},{icon:'📷',name:'胶卷相机',effect:'喜欢',effectColor:'#ffeef5',effectText:'#cc3388',pts:'+60'},{icon:'🌄',name:'风景明信片',effect:'喜欢',effectColor:'#ffeef5',effectText:'#cc3388',pts:'+50'},{icon:'🍷',name:'红酒',effect:'喜欢',effectColor:'#ffeef5',effectText:'#cc3388',pts:'+45'},{icon:'🧮',name:'计算器',effect:'不喜欢',effectColor:'#e8e8e8',effectText:'#888',pts:'-20'},{icon:'💼',name:'公文包',effect:'不喜欢',effectColor:'#e8e8e8',effectText:'#888',pts:'-25'}],
+    schedule:[{day:'周一',slots:['镇北写生 7-12','画室 13-17','小酒馆 18+']},{day:'周二',slots:['画室 8-16','镇广场写生 17','家中 19+']},{day:'周三',slots:['镇南写生 7-12','画室 13-17','夜市 18+']},{day:'周四',slots:['画室 8-16','咖啡馆 17','画室 19+']},{day:'周五',slots:['海边写生 6-12','画室 13-17','酒馆 18+']},{day:'周六',slots:['集市摆摊 9-14','画室 15-17','广场 18+']},{day:'周日',slots:['远足写生 6-14','画室 15','家中 19+']}],
+    events:[{level:2,title:'灵感模特',badge:'好感2心',badgeBg:'#ffeef5',badgeColor:'#cc3388',locked:false,desc:'她请求你担任她一幅画的模特，整个下午的拍摄充满了欢笑，你获得了属于自己的画像道具。'},{level:4,title:'晚霞画展',badge:'好感4心',badgeBg:'#ffeef5',badgeColor:'#cc3388',locked:false,desc:'帮她在集市上布置画展，展览引发热烈反响，她感激地将最得意的一幅画赠予你。'},{level:6,title:'双人创作',badge:'好感6心',badgeBg:'#ffeef5',badgeColor:'#cc3388',locked:true,desc:'她提出共同创作一幅画，一人一笔交替绘制，最终的作品成为她最珍视的收藏之一。'},{level:8,title:'定居之约',badge:'好感8心',badgeBg:'#cc3388',badgeColor:'white',locked:true,desc:'她放弃了继续流浪的计划，决定永久定居心动小镇。她为你留下了一幅描绘两人未来的画作。'}],
+    tips:['欣赏她的画作并给出积极评价，可稳定提升好感','周六集市摆摊时购买她的画，是特别有效的好感方式','送颜料和画具是最佳礼物，在镇上杂货铺可以买到','她喜欢自由，不要试图约束她的行程，顺其自然即可','参加她组织的写生活动，有额外好感加成'],
+    info:{生日:'秋季第5天',星座:'水瓶座',爱好:'写生·旅行·品酒',住所:'镇东画室',家乡:'不固定（曾游历七座城）',梦想:'画遍天下所有美景'},
+    related:[{id:'hh',name:'何欢欢',rel:'艺术好友',icon:'🎵',bg:'#fff0e0'}]
+  },
+  { id:'bq', name:'白秋实', title:'杂货店老板', icon:'🛍️', bg:'#f0f8e0', job:'shop', diff:'easy', tags:['亲和系','万事通'], tagColors:['tag-mint','tag-yellow'], heartLevel:4, hearts:7, label:'友好', labelBg:'#f0f8e0', labelColor:'#5a8a20', liked:false,
+    bio:'白秋实经营着镇上最全的杂货铺，来自各地的货品应有尽有。他对每一位顾客都笑脸相迎，消息灵通，是整个小镇的"情报中心"，总能帮你找到需要的东西。',
+    gifts:[{icon:'🍵',name:'上等绿茶',effect:'大喜欢',effectColor:'#f0f8e0',effectText:'#5a8a20',pts:'+75'},{icon:'🍡',name:'手工糯米糍',effect:'喜欢',effectColor:'#f0f8e0',effectText:'#5a8a20',pts:'+55'},{icon:'🧧',name:'红包',effect:'喜欢',effectColor:'#f0f8e0',effectText:'#5a8a20',pts:'+50'},{icon:'🪴',name:'盆景',effect:'普通',effectColor:'#e8e8e8',effectText:'#888',pts:'+25'},{icon:'🔧',name:'精密工具',effect:'不会用',effectColor:'#e8e8e8',effectText:'#888',pts:'+10'},{icon:'📰',name:'八卦小报',effect:'不高兴',effectColor:'#e8e8e8',effectText:'#888',pts:'-20'}],
+    schedule:[{day:'周一',slots:['杂货店 7-19','家中 20+','']},{day:'周二',slots:['杂货店 7-19','家中 20+','']},{day:'周三',slots:['杂货店 7-12','进货 13-15','杂货店 16+']},{day:'周四',slots:['杂货店 7-19','家中 20+','']},{day:'周五',slots:['杂货店 7-19','家中 20+','']},{day:'周六',slots:['集市 8-14','杂货店 15-18','家中 19+']},{day:'周日',slots:['家中 7-10','茶馆 11-13','杂货店 15+']}],
+    events:[{level:2,title:'老顾客认证',badge:'好感2心',badgeBg:'#f0f8e0',badgeColor:'#5a8a20',locked:false,desc:'累计购买20次后触发。白秋实授予你"老顾客"称号，享受永久9折优惠，并偷偷透露进货时间。'},{level:4,title:'失窃危机',badge:'好感4心',badgeBg:'#f0f8e0',badgeColor:'#5a8a20',locked:false,desc:'帮他找出偷窃货物的真凶，他感激地将店里最贵的道具以成本价卖给你，并升级为VIP顾客。'},{level:6,title:'秘密仓库',badge:'好感6心',badgeBg:'#f0f8e0',badgeColor:'#5a8a20',locked:false,desc:'他带你参观从未对外开放的秘密仓库，里面有全游戏最稀有的道具收藏，并允许你优先购买。'},{level:8,title:'生意伙伴',badge:'好感8心',badgeBg:'#5a8a20',badgeColor:'white',locked:true,desc:'白秋实邀请你成为杂货铺的合伙人，每周可获得被动金币收益，并解锁专属进货渠道系统。'}],
+    tips:['每天去杂货铺购买东西，频繁光顾是最简单的好感策略','他情报丰富，多和他对话可以提前得知活动信息','他喜欢茶类和传统食品，送礼选这类方向绝对不出错','周日茶馆是放松的好时机，此时他心情最佳送礼加成高','达到VIP后可以在他进货时优先购买限定道具'],
+    info:{生日:'冬季第20天',星座:'天秤座',爱好:'品茶·收藏杂货·下棋',住所:'杂货铺后院',家乡:'繁华镇',梦想:'把小镇杂货铺扩展成连锁品牌'},
+    related:[{id:'cx',name:'陈小厨',rel:'供货商',icon:'⭐',bg:'#fef7d8'},{id:'hh',name:'何欢欢',rel:'常客',icon:'🎵',bg:'#fff0e0'}]
+  },
+  { id:'qr', name:'秦若', title:'镇医生', icon:'💊', bg:'#e8f5ff', job:'craft', diff:'mid', tags:['温柔系','治愈者'], tagColors:['tag-mint','tag-lavender'], heartLevel:2, hearts:4, label:'温柔', labelBg:'#e8f5ff', labelColor:'#1a66aa', liked:false,
+    bio:'秦若是小镇唯一的医生，以精湛的医术和温柔的态度深受镇民信赖。她总是轻声细语，用最温柔的方式告诉病人坏消息。即使再忙碌，也会在诊所门口种上鲜花。',
+    gifts:[{icon:'🌿',name:'珍贵草药',effect:'大喜欢',effectColor:'#e8f5ff',effectText:'#1a66aa',pts:'+85'},{icon:'📖',name:'医学书籍',effect:'喜欢',effectColor:'#e8f5ff',effectText:'#1a66aa',pts:'+65'},{icon:'🌸',name:'樱花',effect:'喜欢',effectColor:'#e8f5ff',effectText:'#1a66aa',pts:'+50'},{icon:'🍵',name:'草本茶',effect:'喜欢',effectColor:'#e8f5ff',effectText:'#1a66aa',pts:'+45'},{icon:'🍺',name:'酒精饮料',effect:'讨厌',effectColor:'#e8e8e8',effectText:'#888',pts:'-45'},{icon:'🚬',name:'烟草',effect:'非常讨厌',effectColor:'#fde8df',effectText:'#c0392b',pts:'-80'}],
+    schedule:[{day:'周一',slots:['诊所 8-17','出诊 17-19','家中 20+']},{day:'周二',slots:['诊所 8-17','草药研究 18','家中 20+']},{day:'周三',slots:['诊所 8-17','社区义诊 18','家中 21+']},{day:'周四',slots:['诊所 8-17','学习进修 18','家中 20+']},{day:'周五',slots:['诊所 8-17','出诊 17-19','家中 20+']},{day:'周六',slots:['诊所 9-13','公园散步 14','家中 17+']},{day:'周日',slots:['家中休息','社区义诊 10-12','家中 13+']}],
+    events:[{level:2,title:'义诊邂逅',badge:'好感2心',badgeBg:'#e8f5ff',badgeColor:'#1a66aa',locked:false,desc:'参加她的社区义诊活动后触发。她见你热心助人而主动接触，送给你一份健康食谱与药草包。'},{level:4,title:'夜间急诊',badge:'好感4心',badgeBg:'#e8f5ff',badgeColor:'#1a66aa',locked:false,desc:'深夜有镇民受伤，你协助她进行急救，危机时刻的并肩让两人关系迅速升温。'},{level:6,title:'诊所的秘密',badge:'好感6心',badgeBg:'#e8f5ff',badgeColor:'#1a66aa',locked:true,desc:'她向你透露来到这座小镇的真实原因，那是一段关于救赎与重新出发的动人故事。'},{level:8,title:'相守承诺',badge:'好感8心',badgeBg:'#1a66aa',badgeColor:'white',locked:true,desc:'两人在诊所门口的花园共同种下一棵「守护树」，解锁诊所扩建剧情与永久体力上限提升。'}],
+    tips:['帮她采集草药是最受欢迎的行动，比直接送礼更有效','义诊活动务必参加，每次可获得大量好感','健康生活方式在她面前体现，避免在她视线内做消耗体力的鲁莽行为','送礼选药草或医学相关物品，绝不要送酒或烟草','周三义诊结束后陪她回诊所，有隐藏对话触发机会'],
+    info:{生日:'秋季第15天',星座:'巨蟹座',爱好:'医学研究·园艺·读书',住所:'诊所旁小院',家乡:'医学城',梦想:'让小镇所有人都健康快乐'},
+    related:[{id:'fq',name:'方青青',rel:'医药合作',icon:'🌿',bg:'#e0fce8'},{id:'wm',name:'王明月',rel:'知己',icon:'📚',bg:'#e8f0ff'}]
+  },
+];
+
+/* ══════════════════════════════════════
+   SPA ROUTER
+══════════════════════════════════════ */
+let currentPage = 'home';
+let filterJob = 'all';
+let filterDiff = 'all';
+const liked = {};
+
+function navigate(page, charId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('nav-active'));
+  currentPage = page;
+  window.scrollTo(0, 0);
+
+  if (page === 'home') {
+    document.getElementById('page-home').classList.add('active');
+    document.getElementById('nav-home').classList.add('nav-active');
+  } else if (page === 'charList') {
+    document.getElementById('page-charList').classList.add('active');
+    document.getElementById('nav-charList').classList.add('nav-active');
+    renderCharGrid();
+  } else if (page === 'charDetail') {
+    document.getElementById('page-charDetail').classList.add('active');
+    renderCharDetail(charId);
+  }
+}
+
+/* ══════════════════════════════════════
+   CHARACTER LIST RENDER
+══════════════════════════════════════ */
+function filterChars() {
+  renderCharGrid();
+}
+
+function renderCharGrid() {
+  const query = (document.getElementById('charSearchInput')?.value || '').trim();
+  let list = CHARS.filter(c => {
+    if (filterJob !== 'all' && c.job !== filterJob) return false;
+    if (filterDiff !== 'all' && c.diff !== filterDiff) return false;
+    if (query && !c.name.includes(query) && !c.title.includes(query)) return false;
+    return true;
+  });
+
+  document.getElementById('charCount').textContent = list.length;
+
+  if (!list.length) {
+    document.getElementById('charGrid').innerHTML = `
+      <div class="char-empty">
+        <div class="char-empty-icon">🔍</div>
+        <p>没有找到符合条件的角色</p>
+        <p style="margin-top:8px;font-size:12px">试试调整筛选条件</p>
+      </div>`;
+    return;
+  }
+
+  document.getElementById('charGrid').innerHTML = list.map(c => {
+    const isLiked = liked[c.id] || false;
+    const hearts = Array.from({length:10}, (_,i) => `<div class="heart-pip${i < c.hearts ? ' filled' : ''}"></div>`).join('');
+    const label = c.label ? `<div class="char-card-label" style="background:${c.labelBg};color:${c.labelColor}">${c.label}</div>` : '';
+    return `
+    <div class="char-card" onclick="navigate('charDetail','${c.id}')">
+      <div class="char-card-portrait" style="background:${c.bg}">
+        ${label}
+        <span style="position:relative;z-index:1">${c.icon}</span>
+        <div class="char-card-heart ${isLiked?'liked':''}" onclick="event.stopPropagation();toggleLike('${c.id}',this)" title="收藏">
+          ${isLiked ? '❤️' : '🤍'}
+        </div>
+      </div>
+      <div class="char-card-body">
+        <div class="char-card-name">${c.name}</div>
+        <div class="char-card-role">${c.title}</div>
+        <div class="char-card-tags">
+          ${c.tags.map((t,i) => `<span class="tag ${c.tagColors[i]}">${t}</span>`).join('')}
+        </div>
+        <div style="margin-top:10px">
+          <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px">好感难度</div>
+          <div class="heart-bar">${hearts}</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleLike(id, el) {
+  liked[id] = !liked[id];
+  el.innerHTML = liked[id] ? '❤️' : '🤍';
+  el.classList.toggle('liked', liked[id]);
+}
+
+// Filter chips
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('jobFilter').addEventListener('click', e => {
+    if (!e.target.dataset.job) return;
+    document.querySelectorAll('#jobFilter .filter-chip').forEach(c => c.classList.remove('active'));
+    e.target.classList.add('active');
+    filterJob = e.target.dataset.job;
+    filterChars();
+  });
+  document.getElementById('diffFilter').addEventListener('click', e => {
+    if (!e.target.dataset.diff) return;
+    document.querySelectorAll('#diffFilter .filter-chip').forEach(c => c.classList.remove('active'));
+    e.target.classList.add('active');
+    filterDiff = e.target.dataset.diff;
+    filterChars();
+  });
+});
+
+/* ══════════════════════════════════════
+   CHARACTER DETAIL RENDER
+══════════════════════════════════════ */
+function renderCharDetail(id) {
+  const c = CHARS.find(x => x.id === id);
+  if (!c) return;
+
+  const scheduleHTML = c.schedule.map(d => `
+    <div class="schedule-day">
+      <div class="schedule-day-name">${d.day}</div>
+      ${d.slots.filter(Boolean).map(s => `<div class="schedule-slot">${s}</div>`).join('')}
+    </div>`).join('');
+
+  const eventsHTML = c.events.map(e => `
+    <div class="story-event">
+      <div class="story-heart-level">♥${e.level}</div>
+      <div>
+        <div><span class="story-event-badge" style="background:${e.badgeBg};color:${e.badgeColor}">${e.badge}</span>${e.locked ? '<span class="story-event-badge" style="background:#f0f0f0;color:#888">🔒 未解锁</span>' : ''}</div>
+        <div class="story-event-title">${e.title}</div>
+        <div class="story-event-desc">${e.desc}</div>
+      </div>
+    </div>`).join('');
+
+  const tipsHTML = c.tips.map((t,i) => `
+    <div class="tip-item">
+      <div class="tip-num">${i+1}</div>
+      <div class="tip-text">${t.replace(/「([^」]*)」/g,'<strong>「$1」</strong>')}</div>
+    </div>`).join('');
+
+  const giftsHTML = c.gifts.map(g => `
+    <tr>
+      <td><span class="gift-icon">${g.icon}</span><span class="gift-name">${g.name}</span></td>
+      <td><span class="gift-effect" style="background:${g.effectColor};color:${g.effectText}">${g.effect}</span></td>
+      <td style="font-size:12px;font-weight:600;color:${g.pts.startsWith('+') ? 'var(--mint-dark)' : '#c0392b'}">${g.pts}</span></td>
+    </tr>`).join('');
+
+  const infoRows = Object.entries(c.info).map(([k,v]) => `
+    <tr><td>${k}</td><td>${v}</td></tr>`).join('');
+
+  const relatedHTML = c.related.map(r => `
+    <div class="related-char" onclick="navigate('charDetail','${r.id}')">
+      <div class="related-avatar" style="background:${r.bg}">${r.icon}</div>
+      <div>
+        <div class="related-name">${r.name}</div>
+        <div class="related-rel">${r.rel}</div>
+      </div>
+      <div class="related-arrow">›</div>
+    </div>`).join('');
+
+  const heartPct = Math.round(c.hearts / 10 * 100);
+
+  document.getElementById('charDetailContent').innerHTML = `
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a onclick="navigate('home')">🏡 首页</a>
+      <span class="sep">›</span>
+      <a onclick="navigate('charList')">角色图鉴</a>
+      <span class="sep">›</span>
+      <span>${c.name}</span>
+    </div>
+
+    <!-- HERO -->
+    <div class="detail-hero">
+      <div class="detail-hero-inner">
+        <div class="detail-portrait" style="background:${c.bg}">
+          <span>${c.icon}</span>
+          <div class="detail-portrait-badge">
+            ${ c.diff==='easy' ? '😊' : c.diff==='mid' ? '🤔' : '😰' }
+          </div>
+        </div>
+        <div class="detail-info">
+          <div class="detail-name">${c.name}</div>
+          <div class="detail-title">${c.title}</div>
+          <div class="detail-tags">
+            ${c.tags.map((t,i) => `<span class="detail-tag ${c.tagColors[i]}">${t}</span>`).join('')}
+            <span class="detail-tag" style="background:${c.diff==='easy'?'#c8ede5':c.diff==='mid'?'#fef7d8':'#fde8df'};color:${c.diff==='easy'?'#3d9e87':c.diff==='mid'?'#9a7310':'#e07a55'}">
+              ${ c.diff==='easy'?'易攻略':c.diff==='mid'?'普通':'困难' }
+            </span>
+          </div>
+          <div class="detail-bio">${c.bio}</div>
+          <div class="detail-stats">
+            <div class="detail-stat">
+              <div class="detail-stat-num">${c.hearts}</div>
+              <div class="detail-stat-label">好感等级 / 10</div>
+            </div>
+            <div class="detail-stat">
+              <div class="detail-stat-num">${c.events.filter(e=>!e.locked).length}</div>
+              <div class="detail-stat-label">已解锁剧情</div>
+            </div>
+            <div class="detail-stat">
+              <div class="detail-stat-num">${c.gifts.filter(g=>g.pts.startsWith('+')).length}</div>
+              <div class="detail-stat-label">喜爱礼物</div>
+            </div>
+          </div>
+          <button class="detail-like-btn" onclick="alert('已加入收藏！')">❤️ 加入我的收藏</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="detail-body">
+      <div>
+        <!-- GIFT TABLE -->
+        <div class="detail-section">
+          <div class="detail-section-header">
+            <span style="font-size:18px">🎁</span>
+            <h3>赠礼偏好</h3>
+          </div>
+          <div class="detail-section-body" style="padding:0">
+            <table class="gift-table">
+              <thead><tr>
+                <th style="padding-left:20px">道具</th>
+                <th>反应</th>
+                <th>好感变化</th>
+              </tr></thead>
+              <tbody style="padding:0 20px">
+                ${c.gifts.map(g => `
+                  <tr>
+                    <td style="padding-left:20px"><span class="gift-icon">${g.icon}</span><span class="gift-name">${g.name}</span></td>
+                    <td><span class="gift-effect" style="background:${g.effectColor};color:${g.effectText}">${g.effect}</span></td>
+                    <td style="font-size:13px;font-weight:600;color:${g.pts.startsWith('+') ? 'var(--mint-dark)' : '#c0392b'};padding-right:20px">${g.pts}</td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SCHEDULE -->
+        <div class="detail-section">
+          <div class="detail-section-header">
+            <span style="font-size:18px">🗓️</span>
+            <h3>每周行程</h3>
+          </div>
+          <div class="detail-section-body">
+            <div class="schedule-grid">${scheduleHTML}</div>
+            <p style="font-size:11px;color:var(--text-muted);margin-top:12px">⚠️ 行程在特定节日或剧情触发后可能发生变化</p>
+          </div>
+        </div>
+
+        <!-- STORY EVENTS -->
+        <div class="detail-section">
+          <div class="detail-section-header">
+            <span style="font-size:18px">💌</span>
+            <h3>心动剧情事件</h3>
+          </div>
+          <div class="detail-section-body">${eventsHTML}</div>
+        </div>
+
+        <!-- TIPS -->
+        <div class="detail-section">
+          <div class="detail-section-header">
+            <span style="font-size:18px">💡</span>
+            <h3>攻略小贴士</h3>
+          </div>
+          <div class="detail-section-body">${tipsHTML}</div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="detail-sidebar">
+        <!-- basic info -->
+        <div class="widget">
+          <div class="widget-header"><span style="font-size:16px">📋</span><h3>基本资料</h3></div>
+          <div class="widget-body">
+            <table class="info-table">${infoRows}</table>
+          </div>
+        </div>
+
+        <!-- affection -->
+        <div class="widget">
+          <div class="widget-header"><span style="font-size:16px">💕</span><h3>好感度进度</h3></div>
+          <div class="widget-body">
+            <div class="affection-section">
+              <div class="affection-label">
+                <span>当前好感</span>
+                <span style="color:var(--brown);font-weight:600">${c.hearts} / 10 ♥</span>
+              </div>
+              <div class="affection-bar">
+                <div class="affection-fill" style="width:${heartPct}%"></div>
+              </div>
+            </div>
+            <div style="margin-top:14px">
+              ${['2心','4心','6心','8心','满心'].map((lv,i) => {
+                const done = c.hearts >= (i+1)*2;
+                return `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:12px">
+                  <span style="color:${done?'var(--mint-dark)':'var(--border)'}">${done?'✔':'○'}</span>
+                  <span style="color:${done?'var(--brown)':'var(--text-muted)'}">${lv}剧情${done?'（已解锁）':'（待解锁）'}</span>
+                </div>`;
+              }).join('')}
+            </div>
+            <div style="margin-top:16px;padding:12px;background:var(--cream);border-radius:10px;font-size:12px;color:var(--text-muted)">
+              💡 <strong style="color:var(--brown)">攻略难度</strong>：${c.diff==='easy'?'初级 — 简单日常互动即可推进':'c.diff'==='mid'?'中级 — 需完成特定支线任务':'高级 — 需要精心规划全流程'}
+            </div>
+          </div>
+        </div>
+
+        <!-- related -->
+        <div class="widget">
+          <div class="widget-header"><span style="font-size:16px">👥</span><h3>相关角色</h3></div>
+          <div class="widget-body">
+            ${relatedHTML || '<p style="font-size:13px;color:var(--text-muted)">暂无关联角色记录</p>'}
+            <div style="margin-top:14px;text-align:center">
+              <a onclick="navigate('charList')" style="font-size:12px;color:var(--mint-dark);cursor:pointer">← 返回角色图鉴</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- nav between chars -->
+        <div style="display:flex;gap:8px">
+          ${(()=>{
+            const idx = CHARS.findIndex(x=>x.id===id);
+            const prev = CHARS[idx-1];
+            const next = CHARS[idx+1];
+            return `
+              <div onclick="${prev?`navigate('charDetail','${prev.id}')`:'navigate(\'charList\')'}" style="flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:11px;color:var(--text-muted)">← 上一位</div>
+                <div style="font-size:13px;font-weight:500;color:var(--brown);margin-top:4px">${prev ? prev.icon + ' ' + prev.name : '返回列表'}</div>
+              </div>
+              <div onclick="${next?`navigate('charDetail','${next.id}')`:'navigate(\'charList\')'}" style="flex:1;background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:12px;cursor:pointer;text-align:center;transition:all 0.2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'">
+                <div style="font-size:11px;color:var(--text-muted)">下一位 →</div>
+                <div style="font-size:13px;font-weight:500;color:var(--brown);margin-top:4px">${next ? next.icon + ' ' + next.name : '返回列表'}</div>
+              </div>`;
+          })()}
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">由热爱心动小镇的玩家社区共同维护的非官方攻略站。<br>内容仅供参考，游戏数据以官方为准。</div></div>
+        <div><h4>攻略分类</h4><ul><li><a onclick="navigate('home')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li></ul></div>
+        <div><h4>快速导航</h4><ul>${CHARS.slice(0,5).map(x=>`<li><a onclick="navigate('charDetail','${x.id}')">${x.icon} ${x.name}</a></li>`).join('')}</ul></div>
+        <div><h4>关于我们</h4><ul><li><a>关于本站</a></li><li><a>投稿指南</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+    </footer>
+  `;
+}
+
+/* ══════════════════════════════════════
+   SEARCH
+══════════════════════════════════════ */
+const searchItems = [
+  ...CHARS.map(c => ({ icon:c.icon, title:c.name + ' 好感度攻略', tag:'角色', bg:c.bg, id:c.id, type:'char' })),
+  { icon:'🌊', title:'夏日海边节完整攻略', tag:'活动', bg:'var(--mint-light)', type:'page' },
+  { icon:'💰', title:'夏季农场利润最大化', tag:'农场', bg:'var(--yellow-light)', type:'page' },
+  { icon:'⭐', title:'星光水晶获取指南', tag:'道具', bg:'var(--lavender-light)', type:'page' },
+];
+
+function renderSearch(q) {
+  const el = document.getElementById('searchResults');
+  if (!q) { el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">输入关键词开始搜索…</div>'; return; }
+  const results = searchItems.filter(d => d.title.includes(q) || d.tag.includes(q));
+  if (!results.length) { el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">未找到相关内容</div>'; return; }
+  el.innerHTML = results.map(r => `
+    <div class="search-result-item" onclick="document.getElementById('searchOverlay').classList.remove('show');${r.type==='char'?`navigate('charDetail','${r.id}')`:``}">
+      <div style="width:36px;height:36px;border-radius:10px;background:${r.bg};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${r.icon}</div>
+      <div><div style="font-size:14px;font-weight:500;color:var(--brown)">${r.title}</div><div style="font-size:11px;color:var(--text-muted)">${r.tag}</div></div>
+    </div>`).join('');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('searchOverlay').classList.remove('show');
+});
+
+/* ══════════════════════════════════════
+   BACK TO TOP
+══════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+});
+</script>
+</body>
+</html>
