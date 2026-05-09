@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1197211269392275"
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1197211269392275"
      crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -823,6 +823,13 @@ footer a:hover { color:var(--mint); }
 .search-result-item { padding:10px 20px; display:flex; align-items:center; gap:12px; cursor:pointer; }
 .search-result-item:hover { background:var(--cream); }
 
+.filter-chip { padding:7px 16px;border-radius:20px;font-size:12px;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--text-muted);transition:all .18s;font-family:'Noto Sans SC',sans-serif;font-weight:500; }
+.filter-chip.active { background:var(--mint);color:white;border-color:var(--mint); }
+.filter-chip:not(.active):hover { border-color:var(--mint);color:var(--mint-dark); }
+.quest-cat { display:flex;align-items:center;gap:8px;padding:10px 18px;font-size:13px;cursor:pointer;color:var(--text-muted);transition:all .18s;border-left:3px solid transparent; }
+.quest-cat:hover { background:var(--cream);color:var(--brown); }
+.quest-cat.active { background:var(--mint-light);color:var(--mint-dark);border-left-color:var(--mint);font-weight:500; }
+
 /* ══════════════════════════════════════
    BACK TO TOP
 ══════════════════════════════════════ */
@@ -873,12 +880,12 @@ footer a:hover { color:var(--mint); }
       </div>
     </div>
     <nav>
-      <a onclick="navigate('home')" id="nav-home">新手入门</a>
+      <a onclick="navigate('guide')" id="nav-guide">新手入门</a>
       <a onclick="navigate('charList')" id="nav-charList">角色图鉴</a>
-      <a onclick="navigate('home')">任务攻略</a>
-      <a onclick="navigate('home')">道具大全</a>
-      <a onclick="navigate('home')">活动日历</a>
-      <a onclick="navigate('home')">社区</a>
+      <a onclick="navigate('farm')" id="nav-farm">农场种植</a>
+      <a onclick="navigate('quest')" id="nav-quest">任务攻略</a>
+      <a onclick="navigate('items')" id="nav-items">道具大全</a>
+      <a onclick="navigate('events')" id="nav-events">活动日历</a>
     </nav>
     <div class="search-box" onclick="document.getElementById('searchOverlay').classList.add('show')">
       <span style="font-size:14px; color:var(--text-muted)">🔍</span>
@@ -899,7 +906,7 @@ footer a:hover { color:var(--mint); }
     <h1>欢迎来到心动小镇攻略站</h1>
     <p>全面收录角色攻略、农场技巧、任务流程、节日活动，让你的小镇生活更精彩！</p>
     <div class="hero-btns">
-      <a class="btn-primary" onclick="navigate('charList')">🌱 新手入门指南</a>
+      <a class="btn-primary" onclick="navigate('guide')">🌱 新手入门指南</a>
       <a class="btn-outline" onclick="navigate('charList')">📖 查看所有攻略</a>
     </div>
   </section>
@@ -937,13 +944,13 @@ footer a:hover { color:var(--mint); }
       </div>
       <div class="category-grid">
         <a class="cat-card mint" onclick="navigate('charList')"><span class="cat-icon">👥</span><span class="cat-name">角色图鉴</span><span class="cat-count">42 位角色</span></a>
-        <a class="cat-card peach" onclick="navigate('home')"><span class="cat-icon">🌾</span><span class="cat-name">农场种植</span><span class="cat-count">86 种作物</span></a>
-        <a class="cat-card lavender" onclick="navigate('home')"><span class="cat-icon">📋</span><span class="cat-name">任务攻略</span><span class="cat-count">124 条任务</span></a>
-        <a class="cat-card yellow" onclick="navigate('home')"><span class="cat-icon">🎪</span><span class="cat-name">节日活动</span><span class="cat-count">12 场年度活动</span></a>
-        <a class="cat-card yellow" onclick="navigate('home')"><span class="cat-icon">🏗️</span><span class="cat-name">建造装饰</span><span class="cat-count">300+ 家具</span></a>
-        <a class="cat-card mint" onclick="navigate('home')"><span class="cat-icon">⚗️</span><span class="cat-name">合成配方</span><span class="cat-count">200+ 配方</span></a>
-        <a class="cat-card peach" onclick="navigate('home')"><span class="cat-icon">🐾</span><span class="cat-name">宠物养殖</span><span class="cat-count">32 种动物</span></a>
-        <a class="cat-card lavender" onclick="navigate('home')"><span class="cat-icon">🗺️</span><span class="cat-name">地图探索</span><span class="cat-count">8 大地区</span></a>
+        <a class="cat-card peach" onclick="navigate('farm')"><span class="cat-icon">🌾</span><span class="cat-name">农场种植</span><span class="cat-count">86 种作物</span></a>
+        <a class="cat-card lavender" onclick="navigate('quest')"><span class="cat-icon">📋</span><span class="cat-name">任务攻略</span><span class="cat-count">124 条任务</span></a>
+        <a class="cat-card yellow" onclick="navigate('events')"><span class="cat-icon">🎪</span><span class="cat-name">节日活动</span><span class="cat-count">12 场年度活动</span></a>
+        <a class="cat-card yellow" onclick="navigate('deco')"><span class="cat-icon">🏗️</span><span class="cat-name">建造装饰</span><span class="cat-count">300+ 家具</span></a>
+        <a class="cat-card mint" onclick="navigate('craft')"><span class="cat-icon">⚗️</span><span class="cat-name">合成配方</span><span class="cat-count">200+ 配方</span></a>
+        <a class="cat-card peach" onclick="navigate('pets')"><span class="cat-icon">🐾</span><span class="cat-name">宠物养殖</span><span class="cat-count">32 种动物</span></a>
+        <a class="cat-card lavender" onclick="navigate('map')"><span class="cat-icon">🗺️</span><span class="cat-name">地图探索</span><span class="cat-count">8 大地区</span></a>
       </div>
 
       <!-- guide list -->
@@ -1098,9 +1105,9 @@ footer a:hover { color:var(--mint); }
   <footer>
     <div class="footer-inner">
       <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">由热爱心动小镇的玩家社区共同维护的非官方攻略站。<br>内容仅供参考，游戏数据以官方为准。<br><br>🌸 欢迎投稿与纠错</div></div>
-      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('home')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('home')">农场攻略</a></li><li><a onclick="navigate('home')">任务流程</a></li><li><a onclick="navigate('home')">道具大全</a></li></ul></div>
-      <div><h4>工具</h4><ul><li><a>利润计算器</a></li><li><a>好感度追踪</a></li><li><a>活动日历</a></li><li><a>地图查看器</a></li><li><a>食谱查询</a></li></ul></div>
-      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li><li><a>投稿指南</a></li><li><a>版权声明</a></li><li><a>联系我们</a></li><li><a>加入社区</a></li></ul></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('guide')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('farm')">农场攻略</a></li><li><a onclick="navigate('quest')">任务流程</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>工具</h4><ul><li><a onclick="navigate('farm')">利润计算器</a></li><li><a onclick="navigate('charList')">好感度追踪</a></li><li><a onclick="navigate('events')">活动日历</a></li><li><a onclick="navigate('map')">地图查看器</a></li><li><a onclick="navigate('craft')">食谱查询</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a onclick="navigate('guide')">关于本站</a></li><li><a>投稿指南</a></li><li><a>版权声明</a></li><li><a>联系我们</a></li><li><a>加入社区</a></li></ul></div>
     </div>
     <div class="footer-bottom">© 2025 心动小镇攻略站 · 非官方玩家社区 · 本站内容基于 CC BY-NC-SA 4.0 授权</div>
   </footer>
@@ -1185,6 +1192,589 @@ footer a:hover { color:var(--mint); }
 ══════════════════════════════════════ -->
 <div class="page" id="page-charDetail">
   <div id="charDetailContent"></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: GUIDE (新手入门)
+══════════════════════════════════════ -->
+<div class="page" id="page-guide">
+  <div style="background:linear-gradient(135deg,#e8f5f0,#fef7d8,#fde8df);padding:48px 40px 40px;position:relative;overflow:hidden">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>新手入门</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">🌱 新手入门指南</h1>
+      <p style="font-size:14px;color:var(--text-muted)">从零开始，带你轻松融入心动小镇的田园生活</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px 40px">
+
+    <!-- 快速导航锚点 -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px">
+      <span style="font-size:13px;color:var(--text-muted);align-self:center">快速跳转：</span>
+      <a class="btn-outline" style="padding:6px 16px;font-size:12px" href="#sec-first">第一天</a>
+      <a class="btn-outline" style="padding:6px 16px;font-size:12px" href="#sec-farm">农场基础</a>
+      <a class="btn-outline" style="padding:6px 16px;font-size:12px" href="#sec-social">社交系统</a>
+      <a class="btn-outline" style="padding:6px 16px;font-size:12px" href="#sec-economy">经济体系</a>
+      <a class="btn-outline" style="padding:6px 16px;font-size:12px" href="#sec-faq">常见问题</a>
+    </div>
+
+    <!-- 第一天 -->
+    <div id="sec-first" style="margin-bottom:40px">
+      <div class="section-title"><div class="title-dot" style="background:var(--mint)"></div><h2>第一天该做什么？</h2><div class="title-line"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px">
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+          <div style="font-size:28px;margin-bottom:10px">🏠</div>
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:16px;color:var(--brown);margin-bottom:8px">整理小屋</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.8">进入小屋后先检查箱子里的初始物品，包括种子×10、木材×20、金币×500。整理好背包后再出门。</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+          <div style="font-size:28px;margin-bottom:10px">🌾</div>
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:16px;color:var(--brown);margin-bottom:8px">开垦农地</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.8">使用锄头翻耕门前3×3的土地，第一天务必种下初始种子。春季推荐萝卜或草莓，4天即可收获。</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+          <div style="font-size:28px;margin-bottom:10px">👋</div>
+          <div style="font-family:'Ma Shan Zheng',cursive;font-size:16px;color:var(--brown);margin-bottom:8px">拜访邻居</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.8">傍晚前去镇中心打招呼，与苏晓晨、林木木等至少3位角色互动，每日首次对话固定获得好感+5。</div>
+        </div>
+      </div>
+      <div style="background:var(--yellow-light);border:1.5px solid var(--yellow);border-radius:14px;padding:16px 20px;font-size:13px;color:var(--brown)">
+        ⏰ <strong>时间管理提示：</strong>游戏内每天从早上6:00开始，凌晨2:00强制结束。体力归零会直接晕倒，第二天扣除金币并体力减半。新手建议晚上10:00前回家休息。
+      </div>
+    </div>
+
+    <!-- 农场基础 -->
+    <div id="sec-farm" style="margin-bottom:40px">
+      <div class="section-title"><div class="title-dot" style="background:var(--peach-dark)"></div><h2>农场基础系统</h2><div class="title-line"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px">
+            <div style="background:var(--mint-light);padding:12px 18px;font-weight:500;color:var(--mint-dark);display:flex;align-items:center;gap:8px"><span>🌱</span> 作物生长周期</div>
+            <table style="width:100%;border-collapse:collapse;font-size:12px">
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 18px;color:var(--text-muted)">初级作物</td><td style="padding:10px;color:var(--brown);font-weight:500">4~6天</td><td style="padding:10px;font-size:11px;color:var(--text-muted)">萝卜、生菜</td></tr>
+              <tr style="border-bottom:1px solid var(--border)"><td style="padding:10px 18px;color:var(--text-muted)">中级作物</td><td style="padding:10px;color:var(--brown);font-weight:500">8~12天</td><td style="padding:10px;font-size:11px;color:var(--text-muted)">草莓、番茄</td></tr>
+              <tr><td style="padding:10px 18px;color:var(--text-muted)">高级作物</td><td style="padding:10px;color:var(--brown);font-weight:500">14~20天</td><td style="padding:10px;font-size:11px;color:var(--text-muted)">甜瓜、蓝莓</td></tr>
+            </table>
+          </div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden">
+            <div style="background:var(--peach-light);padding:12px 18px;font-weight:500;color:var(--peach-dark);display:flex;align-items:center;gap:8px"><span>💧</span> 浇水规则</div>
+            <div style="padding:14px 18px;font-size:12px;color:var(--text-muted);line-height:2">
+              · 每天需浇水，漏浇一次停止生长<br>
+              · 雨天自动浇水，无需操作<br>
+              · 升级铜壶可一次浇3×3范围<br>
+              · 施肥可加速生长1天
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden">
+            <div style="background:var(--yellow-light);padding:12px 18px;font-weight:500;color:var(--yellow-dark);display:flex;align-items:center;gap:8px"><span>🌤️</span> 四季可种作物速查</div>
+            <div style="padding:14px 18px">
+              <div style="margin-bottom:12px"><div style="font-size:11px;font-weight:600;color:var(--brown);margin-bottom:6px">🌸 春季</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag tag-mint">萝卜</span><span class="tag tag-mint">草莓</span><span class="tag tag-mint">郁金香</span><span class="tag tag-mint">生菜</span></div></div>
+              <div style="margin-bottom:12px"><div style="font-size:11px;font-weight:600;color:var(--brown);margin-bottom:6px">☀️ 夏季</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag tag-peach">蓝莓</span><span class="tag tag-peach">甜瓜</span><span class="tag tag-peach">番茄</span><span class="tag tag-peach">玉米</span></div></div>
+              <div style="margin-bottom:12px"><div style="font-size:11px;font-weight:600;color:var(--brown);margin-bottom:6px">🍂 秋季</div><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag tag-yellow">南瓜</span><span class="tag tag-yellow">葡萄</span><span class="tag tag-yellow">山芋</span></div></div>
+              <div><div style="font-size:11px;font-weight:600;color:var(--brown);margin-bottom:6px">❄️ 冬季</div><div style="font-size:12px;color:var(--text-muted)">冬季无法种植露天作物，可在温室种植全年作物</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 社交 -->
+    <div id="sec-social" style="margin-bottom:40px">
+      <div class="section-title"><div class="title-dot" style="background:var(--lavender-dark)"></div><h2>社交与好感度系统</h2><div class="title-line"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px">
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:8px">💬</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:4px">每日对话</div><div style="font-size:11px;color:var(--text-muted)">+5 好感（首次）</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:8px">🎁</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:4px">赠送喜爱礼物</div><div style="font-size:11px;color:var(--text-muted)">+50~80 好感</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:8px">🤝</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:4px">完成委托</div><div style="font-size:11px;color:var(--text-muted)">+100~200 好感</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px;text-align:center">
+          <div style="font-size:24px;margin-bottom:8px">🎂</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:4px">生日赠礼</div><div style="font-size:11px;color:var(--text-muted)">好感 ×2 加成</div>
+        </div>
+      </div>
+      <div style="background:var(--lavender-light);border:1.5px solid var(--lavender);border-radius:14px;padding:16px 20px;font-size:13px;color:var(--brown)">
+        💜 <strong>每天限赠2件礼物</strong>，生日当天无上限。禁止在角色面前做让他们不悦的行为（如乱扔垃圾、采摘他人花圃），否则好感-30。
+      </div>
+    </div>
+
+    <!-- 经济 -->
+    <div id="sec-economy" style="margin-bottom:40px">
+      <div class="section-title"><div class="title-dot" style="background:var(--yellow-dark)"></div><h2>经济体系入门</h2><div class="title-line"></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+          <div style="font-size:22px;margin-bottom:8px">🌾</div><div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:8px">农产品销售</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.9">最稳定的收入来源。建议每天把多余的蔬果放入门口的发货箱，次日早上自动结算。加工成果酱或酒可提升售价50%~200%。</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+          <div style="font-size:22px;margin-bottom:8px">⛏️</div><div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:8px">矿洞探索</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.9">每天可去矿洞探索一次。铜矿→铁矿→金矿→宝石。矿石可售卖，也可委托铁匠打造工具升级。越深层收益越高。</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+          <div style="font-size:22px;margin-bottom:8px">🎣</div><div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:8px">钓鱼收益</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.9">镇湖、海边、山涧各有专属鱼种。稀有鱼类售价极高，部分角色赠礼也需要特定鱼类。雨天钓鱼成功率+20%。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div id="sec-faq">
+      <div class="section-title"><div class="title-dot" style="background:var(--brown-mid)"></div><h2>常见问题</h2><div class="title-line"></div></div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <details style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px 20px;cursor:pointer">
+          <summary style="font-size:14px;font-weight:500;color:var(--brown);list-style:none;display:flex;justify-content:space-between">体力耗尽了怎么办？<span>▾</span></summary>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:10px;line-height:1.8">食用食物可以立刻回复体力。最简单的是花10金币在陈小厨店里买面包+30体力。矿泉水+20、烤红薯+35。建议背包常备3~5个食物。</div>
+        </details>
+        <details style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px 20px;cursor:pointer">
+          <summary style="font-size:14px;font-weight:500;color:var(--brown);list-style:none;display:flex;justify-content:space-between">错过了某角色的生日怎么办？<span>▾</span></summary>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:10px;line-height:1.8">错过生日当天就永久失去×2加成机会了，建议在"活动日历"页面提前记录所有角色的生日日期。查看角色详情页可以看到具体生日。</div>
+        </details>
+        <details style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px 20px;cursor:pointer">
+          <summary style="font-size:14px;font-weight:500;color:var(--brown);list-style:none;display:flex;justify-content:space-between">小屋怎么升级？<span>▾</span></summary>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:10px;line-height:1.8">在镇木匠铺（鲁师傅处）花费木材+金币升级。一级→二级：木材×100 + 2000金币，解锁厨房和卧室扩建。二级→三级：木材×200 + 5000金币，解锁地窖。</div>
+        </details>
+        <details style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px 20px;cursor:pointer">
+          <summary style="font-size:14px;font-weight:500;color:var(--brown);list-style:none;display:flex;justify-content:space-between">有哪些不能错过的新手任务？<span>▾</span></summary>
+          <div style="font-size:13px;color:var(--text-muted);margin-top:10px;line-height:1.8">① 镇长的初心委托（第3天触发，完成可解锁地图全图）② 林木木的农场课（第5天，完成送高级化肥×5）③ 苏晓晨的花种委托（第7天，完成解锁花艺系统）</div>
+        </details>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区，欢迎投稿与纠错。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('guide')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('farm')">农场攻略</a></li><li><a onclick="navigate('quest')">任务流程</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('farm')">农场种植</a></li><li><a onclick="navigate('events')">活动日历</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li><li><a>投稿指南</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: FARM (农场种植)
+══════════════════════════════════════ -->
+<div class="page" id="page-farm">
+  <div style="background:linear-gradient(135deg,#e4f5ef,#fef7d8);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>农场种植</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">🌾 农场种植指南</h1>
+      <p style="font-size:14px;color:var(--text-muted)">精选作物数据 · 利润计算 · 季节种植规划</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+
+    <!-- 季节标签 -->
+    <div style="display:flex;gap:8px;margin-bottom:28px" id="farmSeasonTabs">
+      <button class="filter-chip active" data-season="spring" onclick="switchFarmSeason(this)">🌸 春季</button>
+      <button class="filter-chip" data-season="summer" onclick="switchFarmSeason(this)">☀️ 夏季</button>
+      <button class="filter-chip" data-season="autumn" onclick="switchFarmSeason(this)">🍂 秋季</button>
+      <button class="filter-chip" data-season="winter" onclick="switchFarmSeason(this)">❄️ 冬季（温室）</button>
+    </div>
+
+    <!-- 作物表格 -->
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:28px">
+      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;font-weight:500;color:var(--brown)" id="farmSeasonLabel">🌸 春季作物</span>
+        <span style="font-size:12px;color:var(--text-muted)">点击列标题排序 · 数值为单格地块单次收益</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:13px" id="farmTable">
+          <thead>
+            <tr style="background:var(--cream)">
+              <th style="padding:10px 20px;text-align:left;color:var(--text-muted);font-weight:500">作物</th>
+              <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">生长天数</th>
+              <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">种子价格</th>
+              <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">售出价格</th>
+              <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">单次利润</th>
+              <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">效率评级</th>
+              <th style="padding:10px 20px;text-align:center;color:var(--text-muted);font-weight:500">可重复收获</th>
+            </tr>
+          </thead>
+          <tbody id="farmTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 利润计算器 -->
+    <div style="background:linear-gradient(135deg,var(--mint-light),var(--yellow-light));border-radius:16px;padding:24px;margin-bottom:28px">
+      <div style="font-family:'Ma Shan Zheng',cursive;font-size:20px;color:var(--brown);margin-bottom:16px">💰 利润计算器</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr) auto;gap:14px;align-items:end">
+        <div><label style="font-size:12px;color:var(--brown-mid);display:block;margin-bottom:6px">作物</label>
+          <select id="calcCrop" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;background:var(--white);font-family:'Noto Sans SC',sans-serif" onchange="calcProfit()">
+            <option value="180,50,4">🍓 草莓 (春)</option><option value="300,80,8">🫐 蓝莓 (夏)</option><option value="500,120,14">🍈 甜瓜 (夏)</option><option value="80,20,4">🥕 萝卜 (春)</option><option value="120,30,6">🍅 番茄 (夏)</option><option value="400,100,12">🎃 南瓜 (秋)</option>
+          </select></div>
+        <div><label style="font-size:12px;color:var(--brown-mid);display:block;margin-bottom:6px">种植格数</label>
+          <input id="calcPlots" type="number" value="9" min="1" max="999" onchange="calcProfit()" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;background:var(--white);font-family:'Noto Sans SC',sans-serif"></div>
+        <div><label style="font-size:12px;color:var(--brown-mid);display:block;margin-bottom:6px">种植轮次</label>
+          <input id="calcRounds" type="number" value="3" min="1" max="99" onchange="calcProfit()" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:8px 12px;font-size:13px;background:var(--white);font-family:'Noto Sans SC',sans-serif"></div>
+        <button onclick="calcProfit()" class="btn-primary" style="padding:9px 20px;white-space:nowrap">计算</button>
+      </div>
+      <div id="calcResult" style="margin-top:16px;background:rgba(255,255,255,0.8);border-radius:12px;padding:14px 18px;font-size:13px;color:var(--brown);display:none"></div>
+    </div>
+
+    <!-- 农场小贴士 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+        <div style="font-size:16px;font-weight:500;color:var(--brown);margin-bottom:12px">⚡ 效率提升技巧</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:2.2">
+          · 使用<strong style="color:var(--brown)">蜜蜂箱</strong>提升品质，增加30%星级概率<br>
+          · <strong style="color:var(--brown)">施肥</strong>可缩短1天生长期，高价作物必施<br>
+          · 升级<strong style="color:var(--brown)">铜壶→金壶</strong>，浇水效率翻3倍<br>
+          · 雨天优先去矿洞或社交，农场自动浇水<br>
+          · 可重复收获的作物（草莓/蓝莓）性价比最高
+        </div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:20px">
+        <div style="font-size:16px;font-weight:500;color:var(--brown);margin-bottom:12px">🏭 农产品加工链</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:2.2">
+          · 草莓 → 草莓酱：售价 <strong style="color:var(--mint-dark)">+120%</strong><br>
+          · 蓝莓 → 蓝莓酒：售价 <strong style="color:var(--mint-dark)">+200%</strong>（需酒桶）<br>
+          · 甜瓜 → 甜瓜汁：售价 <strong style="color:var(--mint-dark)">+80%</strong>（需榨汁机）<br>
+          · 牛奶 → 奶酪：售价 <strong style="color:var(--mint-dark)">+150%</strong>（需奶酪机）<br>
+          · 蜂蜜 → 蜂蜜酒：售价 <strong style="color:var(--mint-dark)">+180%</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区，欢迎投稿与纠错。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('guide')">新手入门</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('farm')">农场攻略</a></li></ul></div>
+      <div><h4>相关工具</h4><ul><li><a onclick="navigate('craft')">合成配方</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li><li><a>投稿指南</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: QUEST (任务攻略)
+══════════════════════════════════════ -->
+<div class="page" id="page-quest">
+  <div style="background:linear-gradient(135deg,#ede8fc,#fde8df);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>任务攻略</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">📋 任务攻略</h1>
+      <p style="font-size:14px;color:var(--text-muted)">主线 · 支线 · 委托 · 隐藏任务全收录</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <div style="display:grid;grid-template-columns:240px 1fr;gap:28px">
+      <!-- 左侧目录 -->
+      <div>
+        <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;position:sticky;top:88px">
+          <div style="padding:14px 18px;border-bottom:1px solid var(--border);font-size:14px;font-weight:500;color:var(--brown)">任务分类</div>
+          <div id="questCats" style="padding:8px 0">
+            <div class="quest-cat active" data-cat="main" onclick="switchQuestCat(this)">📖 主线任务 <span style="margin-left:auto;font-size:11px;background:var(--mint-light);color:var(--mint-dark);padding:1px 8px;border-radius:8px">12</span></div>
+            <div class="quest-cat" data-cat="side" onclick="switchQuestCat(this)">📌 支线任务 <span style="margin-left:auto;font-size:11px;background:var(--yellow-light);color:var(--yellow-dark);padding:1px 8px;border-radius:8px">36</span></div>
+            <div class="quest-cat" data-cat="daily" onclick="switchQuestCat(this)">☀️ 每日委托 <span style="margin-left:auto;font-size:11px;background:var(--peach-light);color:var(--peach-dark);padding:1px 8px;border-radius:8px">∞</span></div>
+            <div class="quest-cat" data-cat="hidden" onclick="switchQuestCat(this)">🔮 隐藏任务 <span style="margin-left:auto;font-size:11px;background:var(--lavender-light);color:var(--lavender-dark);padding:1px 8px;border-radius:8px">8</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧内容 -->
+      <div id="questContent"></div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('quest')">任务攻略</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('guide')">新手入门</a></li><li><a onclick="navigate('events')">活动日历</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: ITEMS (道具大全)
+══════════════════════════════════════ -->
+<div class="page" id="page-items">
+  <div style="background:linear-gradient(135deg,#fef7d8,#ede8fc);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>道具大全</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">⚗️ 道具大全</h1>
+      <p style="font-size:14px;color:var(--text-muted)">1,200+ 道具完整数据库 · 搜索获取方式 · 用途查询</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <!-- 搜索 -->
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px 20px;display:flex;gap:12px;align-items:center;margin-bottom:20px">
+      <span style="font-size:20px">🔍</span>
+      <input type="text" id="itemSearch" placeholder="搜索道具名称、获取方式、用途…" oninput="filterItems()" style="flex:1;border:none;outline:none;font-size:14px;font-family:'Noto Sans SC',sans-serif;color:var(--text)">
+      <select id="itemCatFilter" onchange="filterItems()" style="border:1.5px solid var(--border);border-radius:10px;padding:6px 12px;font-size:12px;font-family:'Noto Sans SC',sans-serif;background:var(--white)">
+        <option value="all">全部分类</option>
+        <option value="crop">🌾 农产品</option>
+        <option value="mineral">💎 矿物</option>
+        <option value="fish">🐟 鱼类</option>
+        <option value="gift">🎁 礼品</option>
+        <option value="tool">🔧 工具</option>
+        <option value="material">🧱 建材</option>
+      </select>
+    </div>
+    <!-- 分类快捷 -->
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:24px">
+      <div onclick="document.getElementById('itemCatFilter').value='crop';filterItems()" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:24px;margin-bottom:6px">🌾</div><div style="font-size:11px;color:var(--brown-mid)">农产品</div></div>
+      <div onclick="document.getElementById('itemCatFilter').value='mineral';filterItems()" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:24px;margin-bottom:6px">💎</div><div style="font-size:11px;color:var(--brown-mid)">矿物宝石</div></div>
+      <div onclick="document.getElementById('itemCatFilter').value='fish';filterItems()" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:24px;margin-bottom:6px">🐟</div><div style="font-size:11px;color:var(--brown-mid)">鱼类</div></div>
+      <div onclick="document.getElementById('itemCatFilter').value='gift';filterItems()" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:24px;margin-bottom:6px">🎁</div><div style="font-size:11px;color:var(--brown-mid)">礼品杂货</div></div>
+      <div onclick="document.getElementById('itemCatFilter').value='tool';filterItems()" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:24px;margin-bottom:6px">🔧</div><div style="font-size:11px;color:var(--brown-mid)">工具</div></div>
+      <div onclick="document.getElementById('itemCatFilter').value='material';filterItems()" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-size:24px;margin-bottom:6px">🧱</div><div style="font-size:11px;color:var(--brown-mid)">建材</div></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <span style="font-size:13px;color:var(--text-muted)">共找到 <strong id="itemCount" style="color:var(--brown)">30</strong> 件道具</span>
+    </div>
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:var(--cream)">
+          <th style="padding:10px 20px;text-align:left;color:var(--text-muted);font-weight:500">道具</th>
+          <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">分类</th>
+          <th style="padding:10px;text-align:center;color:var(--text-muted);font-weight:500">售价</th>
+          <th style="padding:10px;text-align:left;color:var(--text-muted);font-weight:500">获取方式</th>
+          <th style="padding:10px 20px;text-align:left;color:var(--text-muted);font-weight:500">主要用途</th>
+        </tr></thead>
+        <tbody id="itemTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('items')">道具大全</a></li><li><a onclick="navigate('craft')">合成配方</a></li><li><a onclick="navigate('farm')">农场种植</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('charList')">角色图鉴</a></li><li><a onclick="navigate('quest')">任务攻略</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: EVENTS (活动日历)
+══════════════════════════════════════ -->
+<div class="page" id="page-events">
+  <div style="background:linear-gradient(135deg,#fce8f3,#fef7d8);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>活动日历</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">🎪 活动日历</h1>
+      <p style="font-size:14px;color:var(--text-muted)">年度节日 · 限时活动 · 生日一览 · 奖励速查</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <!-- 当前进行中 -->
+    <div style="background:linear-gradient(135deg,var(--peach-light),var(--yellow-light));border:1.5px solid var(--peach);border-radius:16px;padding:20px 24px;margin-bottom:28px;display:flex;gap:20px;align-items:center">
+      <div style="font-size:48px">🏖️</div>
+      <div style="flex:1">
+        <div style="font-size:11px;background:var(--peach-dark);color:white;padding:3px 10px;border-radius:10px;display:inline-block;margin-bottom:8px">🔴 进行中</div>
+        <div style="font-family:'Ma Shan Zheng',cursive;font-size:22px;color:var(--brown);margin-bottom:4px">夏日海边节</div>
+        <div style="font-size:12px;color:var(--text-muted)">8月15日 — 8月31日 · 限定活动：海沙城堡大赛、钓鱼锦标赛、烟花晚会</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px">剩余时间</div>
+        <div style="font-size:28px;font-weight:700;color:var(--peach-dark)">16天</div>
+        <button onclick="navigate('quest')" class="btn-primary" style="margin-top:8px;padding:6px 16px;font-size:12px">查看攻略 →</button>
+      </div>
+    </div>
+    <!-- 年度活动时间线 -->
+    <div class="section-title"><div class="title-dot" style="background:var(--peach-dark)"></div><h2>年度活动时间线</h2><div class="title-line"></div></div>
+    <div id="eventsTimeline" style="margin-bottom:36px"></div>
+    <!-- 角色生日日历 -->
+    <div class="section-title"><div class="title-dot" style="background:var(--lavender-dark)"></div><h2>角色生日日历</h2><div class="title-line"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px" id="birthdayGrid"></div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('events')">活动日历</a></li><li><a onclick="navigate('quest')">任务攻略</a></li><li><a onclick="navigate('charList')">角色图鉴</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('guide')">新手入门</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: DECO (建造装饰)
+══════════════════════════════════════ -->
+<div class="page" id="page-deco">
+  <div style="background:linear-gradient(135deg,#fde8df,#ede8fc);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>建造装饰</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">🏗️ 建造装饰指南</h1>
+      <p style="font-size:14px;color:var(--text-muted)">家具图鉴 · 风格搭配 · 蓝图获取 · 建材清单</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <!-- 风格选择 -->
+    <div class="section-title"><div class="title-dot" style="background:var(--peach-dark)"></div><h2>装饰风格速览</h2><div class="title-line"></div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px">
+      <div style="background:linear-gradient(135deg,#fef7e8,#fde8df);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:32px;margin-bottom:10px">🌸</div>
+        <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">日式庭院风</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8">樱花围栏 · 石灯笼 · 枯山水 · 木质廊道</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">建材约需：木材×300 · 石材×150 · 和纸×20</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#e8f5f0,#e8eafc);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:32px;margin-bottom:10px">🌿</div>
+        <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">自然田园风</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8">木栅栏 · 花田 · 稻草人 · 石径小路</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">建材约需：木材×200 · 花种×50 · 石块×80</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#ede8fc,#fce8f3);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:32px;margin-bottom:10px">✨</div>
+        <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">梦幻童话风</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8">彩色门廊 · 蘑菇灯 · 星光串灯 · 拱形玫瑰</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">建材约需：彩色木材×150 · 魔法晶石×10</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#e8eafc,#e8f0fc);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:32px;margin-bottom:10px">🏰</div>
+        <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">中世纪古堡风</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8">石墙围栏 · 铁质大门 · 蜡烛灯柱 · 盾牌装饰</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">建材约需：石材×400 · 铁锭×30 · 煤炭×20</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#fef7d8,#e8f5f0);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:32px;margin-bottom:10px">☕</div>
+        <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">北欧简约风</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8">白色木墙 · 几何图案地毯 · 吊灯 · 木质书架</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">建材约需：白桦木×200 · 布料×40 · 玻璃×30</div>
+      </div>
+      <div style="background:linear-gradient(135deg,#fde8df,#fef7d8);border:1.5px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform=''">
+        <div style="font-size:32px;margin-bottom:10px">🌊</div>
+        <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">海滨度假风</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8">木制栈道 · 贝壳装饰 · 条纹遮阳伞 · 沙地小径</div>
+        <div style="margin-top:10px;font-size:11px;color:var(--text-muted)">建材约需：海木×150 · 贝壳×30 · 麻绳×20</div>
+      </div>
+    </div>
+    <!-- 蓝图获取 -->
+    <div class="section-title"><div class="title-dot" style="background:var(--lavender-dark)"></div><h2>家具蓝图获取方式</h2><div class="title-line"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px">
+        <div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:12px">🛒 商店购买</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:2">杂货铺（白秋实）每周一更新部分蓝图，价格200~2000金币。集市摊位（每月第1周日）有限定蓝图出售，抢购需提前规划金币。</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px">
+        <div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:12px">🎪 活动奖励</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:2">节日活动积分可兑换限定蓝图，部分风格家具仅节日可得（如夏日海边风家具仅夏日节期间开放）。</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px">
+        <div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:12px">👥 角色赠送</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:2">好感度达到特定等级时，部分角色会赠送专属蓝图。如苏晓晨6心送"花艺展示架"蓝图，铁修8心送"强化工具柜"蓝图。</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px">
+        <div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:12px">⛏️ 探索掉落</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:2">矿洞深层宝箱有概率掉落稀有蓝图（古代家具系列）。地图探索解锁隐藏区域后也可发现古老蓝图残卷。</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('deco')">建造装饰</a></li><li><a onclick="navigate('craft')">合成配方</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('map')">地图探索</a></li><li><a onclick="navigate('events')">活动日历</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: CRAFT (合成配方)
+══════════════════════════════════════ -->
+<div class="page" id="page-craft">
+  <div style="background:linear-gradient(135deg,#e8eafc,#e8f5f0);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>合成配方</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">⚗️ 合成配方大全</h1>
+      <p style="font-size:14px;color:var(--text-muted)">烹饪 · 炼金 · 工具锻造 · 加工机器</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <div style="display:flex;gap:8px;margin-bottom:24px" id="craftTabs">
+      <button class="filter-chip active" data-craft="cooking" onclick="switchCraftTab(this)">🍳 烹饪</button>
+      <button class="filter-chip" data-craft="alchemy" onclick="switchCraftTab(this)">⚗️ 炼金</button>
+      <button class="filter-chip" data-craft="forge" onclick="switchCraftTab(this)">🔨 锻造</button>
+      <button class="filter-chip" data-craft="machine" onclick="switchCraftTab(this)">🏭 加工机器</button>
+    </div>
+    <div id="craftContent"></div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('craft')">合成配方</a></li><li><a onclick="navigate('farm')">农场种植</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('deco')">建造装饰</a></li><li><a onclick="navigate('quest')">任务攻略</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: PETS (宠物养殖)
+══════════════════════════════════════ -->
+<div class="page" id="page-pets">
+  <div style="background:linear-gradient(135deg,#fde8df,#e8f5f0);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>宠物养殖</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">🐾 宠物养殖指南</h1>
+      <p style="font-size:14px;color:var(--text-muted)">32种农场动物 · 产出攻略 · 好感度系统</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px" id="petGrid"></div>
+    <div class="section-title"><div class="title-dot" style="background:var(--peach-dark)"></div><h2>养殖小贴士</h2><div class="title-line"></div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px">
+        <div style="font-size:18px;margin-bottom:8px">❤️</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:6px">提升动物好感</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.9">每天抚摸动物+1好感，喂食优质饲料+3，好感度越高产出品质越好。</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px">
+        <div style="font-size:18px;margin-bottom:8px">🌿</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:6px">饲料管理</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.9">谷仓必须每天补充饲料，断食会降低好感-5并停止产出。建议种植黑麦，性价比最高。</div>
+      </div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:16px">
+        <div style="font-size:18px;margin-bottom:8px">⭐</div><div style="font-size:13px;font-weight:500;color:var(--brown);margin-bottom:6px">星级产品</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.9">好感度10级时，有60%概率产出★★★品质产品，售价是普通品的3倍。</div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('pets')">宠物养殖</a></li><li><a onclick="navigate('farm')">农场种植</a></li><li><a onclick="navigate('craft')">合成配方</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('items')">道具大全</a></li><li><a onclick="navigate('guide')">新手入门</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: MAP (地图探索)
+══════════════════════════════════════ -->
+<div class="page" id="page-map">
+  <div style="background:linear-gradient(135deg,#e8f0fc,#e8f5f0);padding:48px 40px 40px">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="breadcrumb" style="max-width:none;padding:0 0 12px"><a onclick="navigate('home')">🏡 首页</a><span class="sep">›</span><span>地图探索</span></div>
+      <h1 style="font-family:'Ma Shan Zheng',cursive;font-size:38px;color:var(--brown);margin-bottom:8px">🗺️ 地图探索指南</h1>
+      <p style="font-size:14px;color:var(--text-muted)">8大地区 · 解锁条件 · 资源分布 · 隐藏宝箱</p>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:40px">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px" id="mapGrid"></div>
+  </div>
+  <footer>
+    <div class="footer-inner">
+      <div><div class="footer-logo">🏡 心动小镇攻略站</div><div class="footer-desc">非官方玩家社区。</div></div>
+      <div><h4>攻略分类</h4><ul><li><a onclick="navigate('map')">地图探索</a></li><li><a onclick="navigate('quest')">任务攻略</a></li><li><a onclick="navigate('items')">道具大全</a></li></ul></div>
+      <div><h4>相关页面</h4><ul><li><a onclick="navigate('farm')">农场种植</a></li><li><a onclick="navigate('deco')">建造装饰</a></li></ul></div>
+      <div><h4>关于我们</h4><ul><li><a>关于本站</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 心动小镇攻略站</div>
+  </footer>
 </div>
 
 <!-- SEARCH OVERLAY -->
@@ -1512,17 +2102,30 @@ function navigate(page, charId) {
   currentPage = page;
   window.scrollTo(0, 0);
 
-  if (page === 'home') {
-    document.getElementById('page-home').classList.add('active');
-    document.getElementById('nav-home').classList.add('nav-active');
-  } else if (page === 'charList') {
-    document.getElementById('page-charList').classList.add('active');
-    document.getElementById('nav-charList').classList.add('nav-active');
-    renderCharGrid();
-  } else if (page === 'charDetail') {
-    document.getElementById('page-charDetail').classList.add('active');
-    renderCharDetail(charId);
-  }
+  const pageMap = {
+    home:'page-home', charList:'page-charList', charDetail:'page-charDetail',
+    guide:'page-guide', farm:'page-farm', quest:'page-quest', items:'page-items',
+    events:'page-events', deco:'page-deco', craft:'page-craft', pets:'page-pets', map:'page-map'
+  };
+  const navMap = {
+    home:'nav-home', charList:'nav-charList', charDetail:'nav-charList',
+    guide:'nav-guide', farm:'nav-farm', quest:'nav-quest', items:'nav-items', events:'nav-events'
+  };
+
+  const pageEl = document.getElementById(pageMap[page]);
+  if (pageEl) pageEl.classList.add('active');
+  const navEl = document.getElementById(navMap[page]);
+  if (navEl) navEl.classList.add('nav-active');
+
+  if (page === 'charList') renderCharGrid();
+  else if (page === 'charDetail') renderCharDetail(charId);
+  else if (page === 'farm') { renderFarmTable('spring'); calcProfit(); }
+  else if (page === 'quest') renderQuestContent('main');
+  else if (page === 'items') renderItems();
+  else if (page === 'events') { renderEventsTimeline(); renderBirthdayGrid(); }
+  else if (page === 'craft') renderCraftContent('cooking');
+  else if (page === 'pets') renderPetGrid();
+  else if (page === 'map') renderMapGrid();
 }
 
 /* ══════════════════════════════════════
@@ -1867,9 +2470,443 @@ function renderSearch(q) {
     </div>`).join('');
 }
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') document.getElementById('searchOverlay').classList.remove('show');
-});
+
+/* ══════════════════════════════════════
+   FARM DATA & RENDER
+══════════════════════════════════════ */
+const FARM_DATA = {
+  spring:[
+    {icon:'🥕',name:'萝卜',days:4,seed:40,sell:80,profit:40,rating:'B',repeat:false},
+    {icon:'🥗',name:'生菜',days:6,seed:60,sell:120,profit:60,rating:'B',repeat:false},
+    {icon:'🌷',name:'郁金香',days:6,seed:80,sell:160,profit:80,rating:'B',repeat:false},
+    {icon:'🍓',name:'草莓',days:8,seed:100,sell:180,profit:80,rating:'A',repeat:true},
+    {icon:'🫛',name:'豌豆',days:10,seed:150,sell:250,profit:100,rating:'A',repeat:false},
+    {icon:'🌸',name:'樱花薯',days:12,seed:200,sell:380,profit:180,rating:'S',repeat:false},
+  ],
+  summer:[
+    {icon:'🍅',name:'番茄',days:6,seed:80,sell:120,profit:40,rating:'B',repeat:true},
+    {icon:'🌽',name:'玉米',days:8,seed:120,sell:200,profit:80,rating:'A',repeat:false},
+    {icon:'🫐',name:'蓝莓',days:10,seed:200,sell:300,profit:100,rating:'A',repeat:true},
+    {icon:'🍑',name:'桃子',days:12,seed:180,sell:320,profit:140,rating:'A',repeat:false},
+    {icon:'🍈',name:'甜瓜',days:14,seed:300,sell:500,profit:200,rating:'S',repeat:false},
+    {icon:'🍇',name:'葡萄',days:10,seed:160,sell:270,profit:110,rating:'A',repeat:true},
+  ],
+  autumn:[
+    {icon:'🎃',name:'南瓜',days:12,seed:200,sell:400,profit:200,rating:'S',repeat:false},
+    {icon:'🍠',name:'山芋',days:6,seed:70,sell:130,profit:60,rating:'B',repeat:false},
+    {icon:'🍄',name:'松茸',days:8,seed:250,sell:500,profit:250,rating:'S',repeat:false},
+    {icon:'🌰',name:'栗子',days:10,seed:150,sell:280,profit:130,rating:'A',repeat:false},
+    {icon:'🍁',name:'红枫果',days:14,seed:300,sell:600,profit:300,rating:'S',repeat:false},
+    {icon:'🥜',name:'花生',days:6,seed:80,sell:150,profit:70,rating:'B',repeat:true},
+  ],
+  winter:[
+    {icon:'❄️',name:'冬萝卜',days:6,seed:120,sell:200,profit:80,rating:'B',repeat:false},
+    {icon:'🌿',name:'珍稀草药',days:10,seed:400,sell:800,profit:400,rating:'S',repeat:false},
+    {icon:'💎',name:'冰晶蘑菇',days:14,seed:500,sell:1000,profit:500,rating:'S',repeat:false},
+    {icon:'🌺',name:'雪莲花',days:20,seed:800,sell:1800,profit:1000,rating:'S+',repeat:false},
+  ]
+};
+
+function renderFarmTable(season) {
+  const labels = {spring:'🌸 春季作物',summer:'☀️ 夏季作物',autumn:'🍂 秋季作物',winter:'❄️ 冬季温室作物'};
+  document.getElementById('farmSeasonLabel').textContent = labels[season];
+  const data = FARM_DATA[season];
+  const ratingColor = {B:'#e8e8e8',A:'#fef7d8','S':'#fde8df','S+':'#ede8fc'};
+  const ratingText = {B:'#888',A:'#9a7310',S:'#c0502a','S+':'#6b4fc9'};
+  document.getElementById('farmTableBody').innerHTML = data.map(r => `
+    <tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:12px 20px"><span style="font-size:18px;margin-right:10px">${r.icon}</span><strong style="color:var(--brown)">${r.name}</strong></td>
+      <td style="padding:12px;text-align:center;color:var(--text-muted)">${r.days}天</td>
+      <td style="padding:12px;text-align:center;color:var(--text-muted)">${r.seed}💰</td>
+      <td style="padding:12px;text-align:center;color:var(--brown);font-weight:500">${r.sell}💰</td>
+      <td style="padding:12px;text-align:center;font-weight:600;color:var(--mint-dark)">+${r.profit}💰</td>
+      <td style="padding:12px;text-align:center"><span style="background:${ratingColor[r.rating]};color:${ratingText[r.rating]};padding:3px 10px;border-radius:10px;font-weight:700;font-size:12px">${r.rating}</span></td>
+      <td style="padding:12px 20px;text-align:center">${r.repeat ? '<span style="color:var(--mint-dark);font-weight:500">✔ 是</span>' : '<span style="color:var(--text-muted)">✗ 否</span>'}</td>
+    </tr>`).join('');
+}
+
+function switchFarmSeason(btn) {
+  document.querySelectorAll('#farmSeasonTabs .filter-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderFarmTable(btn.dataset.season);
+}
+
+function calcProfit() {
+  const [sell, seed, days] = (document.getElementById('calcCrop')?.value||'180,50,4').split(',').map(Number);
+  const plots = parseInt(document.getElementById('calcPlots')?.value)||9;
+  const rounds = parseInt(document.getElementById('calcRounds')?.value)||3;
+  const totalSeedCost = seed * plots * rounds;
+  const totalRevenue = sell * plots * rounds;
+  const totalProfit = totalRevenue - totalSeedCost;
+  const el = document.getElementById('calcResult');
+  if (!el) return;
+  el.style.display = 'block';
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center">
+      <div><div style="font-size:20px;font-weight:700;color:var(--brown)">${totalSeedCost}💰</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">总种子成本</div></div>
+      <div><div style="font-size:20px;font-weight:700;color:var(--brown)">${totalRevenue}💰</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">总售出收入</div></div>
+      <div><div style="font-size:20px;font-weight:700;color:var(--mint-dark)">+${totalProfit}💰</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">净利润</div></div>
+      <div><div style="font-size:20px;font-weight:700;color:var(--peach-dark)">${days*rounds}天</div><div style="font-size:11px;color:var(--text-muted);margin-top:2px">总耗时（${rounds}轮）</div></div>
+    </div>`;
+}
+
+/* ══════════════════════════════════════
+   QUEST DATA & RENDER
+══════════════════════════════════════ */
+const QUEST_DATA = {
+  main:[
+    {id:1,title:'心动小镇，你好',npc:'镇长',reward:'地图全图 + 500金币',time:'第1天',status:'已完成',desc:'从仓库找到镇长的信，前往市政厅报到，和镇长进行首次对话，获得镇民手册。'},
+    {id:2,title:'第一次耕耘',npc:'林木木',reward:'化肥×5 + 好感+50',time:'第3天',status:'已完成',desc:'拜访林木木，在他的指导下翻耕3×3农地并种下第一粒种子，次日再次拜访汇报。'},
+    {id:3,title:'与镇民同行',npc:'苏晓晨',reward:'花艺系统解锁 + 好感+80',time:'第5天',status:'进行中',desc:'苏晓晨委托你帮她采集5束野花，完成后解锁花艺装饰系统，可在家园种植观赏花卉。'},
+    {id:4,title:'镇上的第一场雨',npc:'秦若',reward:'药草包×3 + 健康系统解锁',time:'第一次下雨天',status:'未开始',desc:'下雨天触发，找到被雨淋病的镇民，帮秦若完成急救任务，解锁体力恢复食谱系统。'},
+    {id:5,title:'古老的地窖',npc:'叶夜辰',reward:'地窖蓝图 + 神秘材料包',time:'第10天夜晚',status:'未开始',desc:'夜晚在镇北遇见叶夜辰，他带你发现一处古老地窖入口，开启地下探索副本。'},
+    {id:6,title:'第一届镇庆日',npc:'所有镇民',reward:'限定装饰品 + 全员好感+20',time:'春季第28天',status:'未开始',desc:'小镇第一届庆典日，帮助各个镇民准备庆典材料，最终在广场参加盛大庆典。'},
+  ],
+  side:[
+    {id:101,title:'苏晓晨：稀有花种探寻',npc:'苏晓晨',reward:'好感+100 + 花店折扣解锁',time:'好感4心后',status:'进行中',desc:'帮苏晓晨在山间找到据说只在夏日清晨开放的月见草，需要特定时间段前往探索区域采集。'},
+    {id:102,title:'林木木：老农的骄傲',npc:'林木木',reward:'高级肥料×10 + 好感+80',time:'好感4心后',status:'未开始',desc:'林木木希望你帮他种植一块高品质作物展示给镇上其他人看，需要达到指定品质评级。'},
+    {id:103,title:'叶夜辰：碎月石之谜',npc:'叶夜辰',reward:'星光水晶 + 解锁暗月商会后室',time:'好感4心后',status:'未开始',desc:'帮叶夜辰收集散落在小镇各地的碎月石碎片，共需找到8块，完成后解锁神秘商品。'},
+    {id:104,title:'陈小厨：顶级食材探寻',npc:'陈小厨',reward:'永久餐厅9折 + 好感+100',time:'好感6心后',status:'未开始',desc:'为陈小厨寻找传说中的黑松露（矿洞深层偶发掉落）、极品大闸蟹（秋季钓鱼稀有），帮他完成一道终极料理。'},
+    {id:105,title:'王大爷：那条大鱼',npc:'王大爷',reward:'传说鱼竿 + 好感+120',time:'好感6心后',status:'未开始',desc:'帮王大爷在镇外深水区钓到据说50年前有人目击的"月光鲤"，需要传说级鱼竿和特定时间条件。'},
+  ],
+  daily:[
+    {id:201,title:'新鲜蔬菜配送',npc:'陈小厨',reward:'20~50金币',time:'每天刷新',status:'可接取',desc:'向陈小厨提供指定种类蔬菜若干，每日委托随机刷新需求列表，完成即结算金币。'},
+    {id:202,title:'矿石采购',npc:'铁修',reward:'30~80金币',time:'每天刷新',status:'可接取',desc:'铁修需要特定数量的矿石用于打造，每日随机指定矿石种类，去矿洞采集后交付。'},
+    {id:203,title:'今日钓鱼挑战',npc:'王大爷',reward:'钓具配件 + 10~30金币',time:'每天刷新',status:'可接取',desc:'王大爷每天发布钓鱼挑战，指定目标鱼种和数量，完成可获得钓具升级材料。'},
+    {id:204,title:'镇民采购请求',npc:'随机镇民',reward:'好感+15 + 50~200金币',time:'每天刷新',status:'可接取',desc:'公告板随机刷新镇民的购物请求，提供对应物品可同时获得金币和好感度奖励。'},
+  ],
+  hidden:[
+    {id:301,title:'🔮 月光秘境',npc:'叶夜辰',reward:'月光套装蓝图 + 星光水晶×5',time:'好感8心 · 满月之夜',status:'🔒 未解锁',desc:'满月之夜叶夜辰好感达到8心时，在废弃灯塔顶触发。带你进入只在满月出现的秘密空间，解锁月光系列家具。'},
+    {id:302,title:'🌸 初代花园的约定',npc:'苏晓晨',reward:'传说花种 + 家园专属区域解锁',time:'好感10心 · 春季',status:'🔒 未解锁',desc:'苏晓晨好感10心，春季第一天触发。一起在小镇荒废角落开辟"心动百花园"，永久解锁家园特别区域。'},
+    {id:303,title:'⚒️ 失落的古锻炉',npc:'铁修',reward:'古代武器图纸 + 锻造技能+',time:'矿洞深层60层以下',status:'🔒 未解锁',desc:'在矿洞60层以下发现古代锻炉，触发后铁修会来协助，解锁古代系列武器和工具的特殊锻造配方。'},
+    {id:304,title:'👴 七十年前的信',npc:'王大爷',reward:'小镇历史书 + 隐藏地区解锁',time:'好感8心 · 冬季',status:'🔒 未解锁',desc:'冬季王大爷好感达8心触发。他将一封七十年前的旧信交给你，信中指向小镇北山隐藏的古老祠堂，解锁新地区。'},
+  ]
+};
+
+function renderQuestContent(cat) {
+  const quests = QUEST_DATA[cat];
+  const catLabels = {main:'主线任务',side:'支线任务',daily:'每日委托',hidden:'隐藏任务'};
+  const statusColors = {'已完成':'background:#c8ede5;color:#3d9e87','进行中':'background:#fef7d8;color:#9a7310','未开始':'background:#f0f0f0;color:#888','可接取':'background:#fde8df;color:#e07a55','🔒 未解锁':'background:#ede9fc;color:#6b4fc9'};
+  document.getElementById('questContent').innerHTML = `
+    <div style="margin-bottom:16px;display:flex;align-items:center;justify-content:space-between">
+      <h2 style="font-family:'Ma Shan Zheng',cursive;font-size:22px;color:var(--brown)">${catLabels[cat]}</h2>
+      <span style="font-size:12px;color:var(--text-muted)">共 ${quests.length} 条</span>
+    </div>
+    ${quests.map(q => `
+      <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:12px;transition:all .2s" onmouseover="this.style.borderColor='var(--mint)';this.style.boxShadow='0 4px 14px var(--shadow)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow=''">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="background:var(--cream);border-radius:10px;padding:8px 12px;font-size:11px;font-weight:600;color:var(--brown-mid);text-align:center;flex-shrink:0;min-width:36px">#${q.id}</div>
+          <div style="flex:1">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+              <span style="font-size:15px;font-weight:500;color:var(--brown)">${q.title}</span>
+              <span style="font-size:10px;padding:2px 10px;border-radius:10px;font-weight:500;${statusColors[q.status]||'background:#f0f0f0;color:#888'}">${q.status}</span>
+            </div>
+            <div style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:8px">${q.desc}</div>
+            <div style="display:flex;gap:16px;font-size:11px;color:var(--text-muted);flex-wrap:wrap">
+              <span>👤 委托方：<strong style="color:var(--brown)">${q.npc}</strong></span>
+              <span>⏰ 触发：<strong style="color:var(--brown)">${q.time}</strong></span>
+              <span>🎁 奖励：<strong style="color:var(--mint-dark)">${q.reward}</strong></span>
+            </div>
+          </div>
+        </div>
+      </div>`).join('')}`;
+}
+
+function switchQuestCat(el) {
+  document.querySelectorAll('.quest-cat').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderQuestContent(el.dataset.cat);
+}
+
+/* ══════════════════════════════════════
+   ITEMS DATA & RENDER
+══════════════════════════════════════ */
+const ITEMS_DATA = [
+  {icon:'🍓',name:'草莓',cat:'crop',catLabel:'农产品',sell:180,obtain:'春季农场种植',use:'售卖 · 烹饪 · 苏晓晨喜欢'},
+  {icon:'🫐',name:'蓝莓',cat:'crop',catLabel:'农产品',sell:300,obtain:'夏季农场种植',use:'售卖 · 酿酒 · 加工果酱'},
+  {icon:'🍈',name:'甜瓜',cat:'crop',catLabel:'农产品',sell:500,obtain:'夏季农场种植',use:'售卖 · 榨汁 · 高价礼品'},
+  {icon:'🌽',name:'玉米',cat:'crop',catLabel:'农产品',sell:200,obtain:'夏季农场种植',use:'售卖 · 喂养动物 · 林木木喜欢'},
+  {icon:'🎃',name:'南瓜',cat:'crop',catLabel:'农产品',sell:400,obtain:'秋季农场种植',use:'售卖 · 烹饪 · 秋季节日'},
+  {icon:'💎',name:'星光水晶',cat:'mineral',catLabel:'矿物',sell:1200,obtain:'矿洞50层以下 · 叶夜辰商店',use:'叶夜辰最爱礼物 · 升级魔法设施'},
+  {icon:'🪨',name:'铜矿石',cat:'mineral',catLabel:'矿物',sell:50,obtain:'矿洞1~20层',use:'锻造铜制工具 · 建造材料'},
+  {icon:'⛏️',name:'铁矿石',cat:'mineral',catLabel:'矿物',sell:100,obtain:'矿洞20~40层',use:'锻造铁制工具 · 机器零件'},
+  {icon:'✨',name:'金矿石',cat:'mineral',catLabel:'矿物',sell:300,obtain:'矿洞40~60层',use:'锻造金制工具 · 高价售卖'},
+  {icon:'🐟',name:'鲤鱼',cat:'fish',catLabel:'鱼类',sell:120,obtain:'镇湖钓鱼（全季节）',use:'售卖 · 烹饪 · 王大爷委托'},
+  {icon:'🐠',name:'珊瑚鱼',cat:'fish',catLabel:'鱼类',sell:350,obtain:'夏季海边钓鱼',use:'高价售卖 · 陈小厨收购'},
+  {icon:'🦑',name:'深海鱿鱼',cat:'fish',catLabel:'鱼类',sell:600,obtain:'夜晚海边深水区钓鱼',use:'高价售卖 · 特殊料理材料'},
+  {icon:'🌻',name:'向日葵',cat:'gift',catLabel:'礼品',sell:80,obtain:'夏季农场种植 · 花店购买',use:'苏晓晨最爱礼物 +80好感'},
+  {icon:'🎵',name:'手工音乐盒',cat:'gift',catLabel:'礼品',sell:0,obtain:'铁修打造（乐谱+铁锭）',use:'小岚最爱礼物 +80好感'},
+  {icon:'🍶',name:'老酒',cat:'gift',catLabel:'礼品',sell:150,obtain:'酒桶加工 · 商店购买',use:'王大爷最爱礼物 +80好感'},
+  {icon:'🔧',name:'铜锄头',cat:'tool',catLabel:'工具',sell:0,obtain:'铁修打造（铜锭×5）',use:'翻耕农地，升级版增加耕作范围'},
+  {icon:'🪣',name:'金壶',cat:'tool',catLabel:'工具',sell:0,obtain:'铁修打造（金锭×5）',use:'一次浇水5×5范围'},
+  {icon:'🎣',name:'传说鱼竿',cat:'tool',catLabel:'工具',sell:0,obtain:'王大爷好感6心任务奖励',use:'解锁深水区钓鱼 · 提升稀有鱼概率'},
+  {icon:'🪵',name:'木材',cat:'material',catLabel:'建材',sell:10,obtain:'砍伐树木 · 商店购买',use:'建造家园设施 · 合成家具'},
+  {icon:'🪨',name:'石块',cat:'material',catLabel:'建材',sell:8,obtain:'敲打石头 · 矿洞',use:'建造石质设施 · 铺设道路'},
+  {icon:'🌿',name:'珍稀草药',cat:'crop',catLabel:'农产品',sell:800,obtain:'冬季温室 · 山间野外采集',use:'秦若最爱 · 炼金配方材料'},
+  {icon:'🍄',name:'松茸',cat:'crop',catLabel:'农产品',sell:500,obtain:'秋季农场种植 · 树林采集',use:'售卖 · 陈小厨顶级料理材料'},
+  {icon:'🧀',name:'顶级奶酪',cat:'gift',catLabel:'礼品',sell:400,obtain:'奶酪机加工（★★★牛奶）',use:'陈小厨最爱礼物 · 高价售卖'},
+  {icon:'🌙',name:'月光石',cat:'mineral',catLabel:'矿物',sell:800,obtain:'满月之夜矿洞 · 叶夜辰商店',use:'叶夜辰喜欢 · 月光设施建造'},
+  {icon:'🐄',name:'牛奶（★★★）',cat:'gift',catLabel:'礼品',sell:500,obtain:'好感10级奶牛产出',use:'奶酪制作 · 高价售卖'},
+  {icon:'🥚',name:'金蛋',cat:'gift',catLabel:'礼品',sell:600,obtain:'好感10级鸡产出（稀有）',use:'特殊烹饪 · 高价售卖'},
+  {icon:'🍯',name:'蜂蜜',cat:'crop',catLabel:'农产品',sell:200,obtain:'放置蜂箱（花田旁）',use:'售卖 · 酿蜂蜜酒 · 甜品配方'},
+  {icon:'📜',name:'古老卷轴',cat:'gift',catLabel:'礼品',sell:0,obtain:'地图探索隐藏宝箱',use:'叶夜辰最爱 · 触发隐藏剧情'},
+  {icon:'🧪',name:'魔法药水',cat:'gift',catLabel:'礼品',sell:300,obtain:'叶夜辰商店 · 炼金配方',use:'叶夜辰喜欢 · 临时属性增强'},
+  {icon:'🌈',name:'彩虹石',cat:'mineral',catLabel:'矿物',sell:2000,obtain:'矿洞70层以下（极稀有）',use:'明珠最爱礼物 · 高级装饰材料'},
+];
+
+function renderItems() {
+  filterItems();
+}
+
+function filterItems() {
+  const q = (document.getElementById('itemSearch')?.value||'').trim();
+  const cat = document.getElementById('itemCatFilter')?.value||'all';
+  let list = ITEMS_DATA.filter(i => {
+    const matchCat = cat === 'all' || i.cat === cat;
+    const matchQ = !q || i.name.includes(q) || i.obtain.includes(q) || i.use.includes(q) || i.catLabel.includes(q);
+    return matchCat && matchQ;
+  });
+  document.getElementById('itemCount').textContent = list.length;
+  document.getElementById('itemTableBody').innerHTML = list.map((i,idx) => `
+    <tr style="border-bottom:1px solid var(--border);${idx%2===0?'background:white':'background:var(--cream)'}">
+      <td style="padding:11px 20px"><span style="font-size:18px;margin-right:10px">${i.icon}</span><strong style="color:var(--brown)">${i.name}</strong></td>
+      <td style="padding:11px;text-align:center"><span style="font-size:10px;padding:2px 8px;border-radius:8px;background:var(--mint-light);color:var(--mint-dark);font-weight:500">${i.catLabel}</span></td>
+      <td style="padding:11px;text-align:center;font-weight:600;color:${i.sell?'var(--brown)':'var(--text-muted)'}">${i.sell?i.sell+'💰':'不可售'}</td>
+      <td style="padding:11px;font-size:12px;color:var(--text-muted)">${i.obtain}</td>
+      <td style="padding:11px 20px;font-size:12px;color:var(--text-muted)">${i.use}</td>
+    </tr>`).join('');
+}
+
+/* ══════════════════════════════════════
+   EVENTS DATA & RENDER
+══════════════════════════════════════ */
+const EVENTS_DATA = [
+  {season:'春',day:1,name:'新春花祭',icon:'🌸',duration:'春1~7',reward:'限定花园装饰 · 春日礼盒',tip:'赠花给所有角色好感×1.5'},
+  {season:'春',day:14,name:'爱心甜点节',icon:'💝',duration:'春14',reward:'专属甜点配方 · 糖果箱',tip:'向喜欢的角色送甜点可触发特殊对话'},
+  {season:'春',day:28,name:'丰收庆典预热',icon:'🎊',duration:'春28',reward:'烟花道具 · 庆典积分×2',tip:'提前准备庆典物资参与度更高'},
+  {season:'夏',day:1,name:'夏日海边节',icon:'🏖️',duration:'夏1~夏7',reward:'海风套装蓝图 · 夏日限定道具',tip:'沙堡大赛冠军额外奖励稀有蓝图'},
+  {season:'夏',day:15,name:'萤火虫之夜',icon:'✨',duration:'夏15（夜晚）',reward:'萤火灯笼 · 神秘水晶碎片',tip:'携带喜欢的角色同行可触发专属剧情'},
+  {season:'夏',day:28,name:'钓鱼锦标赛',icon:'🎣',duration:'夏28',reward:'传说鱼竿配件 · 钓鱼积分翻倍',tip:'雨天成功率更高，提前准备鱼饵'},
+  {season:'秋',day:1,name:'丰收节',icon:'🍂',duration:'秋1~秋5',reward:'丰收礼包 · 农场装饰套装',tip:'全农产品售价+30%，囤货提前卖'},
+  {season:'秋',day:15,name:'月圆赏月会',icon:'🌕',duration:'秋15（夜晚）',reward:'月光石×3 · 专属对话解锁',tip:'此日叶夜辰商店营业至天亮，稀有品出现率翻倍'},
+  {season:'秋',day:28,name:'南瓜灯节',icon:'🎃',duration:'秋28~秋30',reward:'南瓜灯套装 · 惊吓道具',tip:'南瓜售价此期间翻3倍'},
+  {season:'冬',day:1,name:'初雪庆典',icon:'❄️',duration:'冬1',reward:'雪景装饰套装',tip:'初雪当天所有角色在广场聚集，好感+10'},
+  {season:'冬',day:20,name:'冬日感恩节',icon:'🎁',duration:'冬20',reward:'节日礼盒 · 全年回顾奖励',tip:'向所有角色送礼，单日好感获取上限提升'},
+  {season:'冬',day:28,name:'跨年烟火大会',icon:'🎆',duration:'冬28~冬30',reward:'年度限定装饰 · 新年礼包',tip:'活动期间金币奖励全面翻倍'},
+];
+
+const BIRTHDAY_DATA = [
+  {name:'苏晓晨',icon:'🌸',season:'春',day:14,gift:'向日葵',bg:'var(--peach-light)'},
+  {name:'林木木',icon:'🌿',season:'夏',day:3,gift:'蓝莓派',bg:'var(--mint-light)'},
+  {name:'叶夜辰',icon:'🔮',season:'冬',day:20,gift:'星光水晶',bg:'var(--lavender-light)'},
+  {name:'陈小厨',icon:'⭐',season:'秋',day:7,gift:'松露',bg:'var(--yellow-light)'},
+  {name:'王大爷',icon:'👴',season:'冬',day:5,gift:'大鱼干',bg:'#ddeaf7'},
+  {name:'明珠',icon:'🎨',season:'春',day:28,gift:'彩虹石',bg:'#fce8f3'},
+  {name:'小岚',icon:'🎵',season:'夏',day:18,gift:'手工音乐盒',bg:'#e8eafc'},
+  {name:'铁修',icon:'⚒️',season:'秋',day:15,gift:'精铁矿石',bg:'#e8e0d0'},
+  {name:'秦若',icon:'💊',season:'秋',day:15,gift:'珍稀草药',bg:'#e8f5ff'},
+  {name:'白秋实',icon:'🏪',season:'冬',day:20,gift:'上等绿茶',bg:'#e8f8e0'},
+  {name:'方青青',icon:'🌿',season:'春',day:8,gift:'草药束',bg:'#e0fce8'},
+  {name:'何欢欢',icon:'🎵',season:'夏',day:22,gift:'乐谱',bg:'#fff0e0'},
+];
+
+function renderEventsTimeline() {
+  const seasons = ['春','夏','秋','冬'];
+  const seasonIcons = {春:'🌸',夏:'☀️',秋:'🍂',冬:'❄️'};
+  const seasonColors = {春:'var(--mint-light)',夏:'var(--peach-light)',秋:'var(--yellow-light)',冬:'var(--lavender-light)'};
+  document.getElementById('eventsTimeline').innerHTML = seasons.map(s => {
+    const events = EVENTS_DATA.filter(e => e.season === s);
+    return `<div style="margin-bottom:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <span style="font-size:20px">${seasonIcons[s]}</span>
+        <span style="font-family:'Ma Shan Zheng',cursive;font-size:18px;color:var(--brown)">${s}季活动</span>
+        <div style="flex:1;height:1px;background:var(--border)"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${events.map(e => `
+          <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px 18px;display:flex;gap:14px;align-items:center;transition:all .2s;cursor:pointer" onmouseover="this.style.borderColor='var(--mint)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size:28px;flex-shrink:0">${e.icon}</div>
+            <div style="flex:1">
+              <div style="font-size:14px;font-weight:500;color:var(--brown);margin-bottom:2px">${e.name}</div>
+              <div style="font-size:11px;color:var(--text-muted)">${e.duration} · ${e.tip}</div>
+            </div>
+            <div style="text-align:right;flex-shrink:0">
+              <div style="font-size:10px;color:var(--text-muted);margin-bottom:4px">奖励</div>
+              <div style="font-size:11px;color:var(--mint-dark);font-weight:500">${e.reward.split(' · ')[0]}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderBirthdayGrid() {
+  document.getElementById('birthdayGrid').innerHTML = BIRTHDAY_DATA.map(b => `
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:14px;display:flex;gap:12px;align-items:center;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 14px var(--shadow)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="width:42px;height:42px;border-radius:50%;background:${b.bg};display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">${b.icon}</div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--brown)">${b.name}</div>
+        <div style="font-size:11px;color:var(--text-muted)">${b.season}季 第${b.day}天 🎂</div>
+        <div style="font-size:10px;color:var(--mint-dark);margin-top:2px">💝 ${b.gift}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ══════════════════════════════════════
+   CRAFT DATA & RENDER
+══════════════════════════════════════ */
+const CRAFT_DATA = {
+  cooking:[
+    {icon:'🍓',name:'草莓酱',materials:'草莓×3 · 糖×1',result:'售价324💰',time:'2小时',unlock:'初始解锁'},
+    {icon:'🫐',name:'蓝莓酒',materials:'蓝莓×6 · 酒瓶×1',result:'售价900💰',time:'8小时',unlock:'酒桶'},
+    {icon:'🥧',name:'苹果派',materials:'苹果×2 · 小麦粉×2 · 糖×1',result:'好感礼物+体力+60',time:'3小时',unlock:'厨房升级Lv2'},
+    {icon:'🍜',name:'鲜鱼汤',materials:'鲤鱼×1 · 葱×2 · 盐×1',result:'体力+80',time:'1小时',unlock:'初始解锁'},
+    {icon:'🎂',name:'生日蛋糕',materials:'面粉×3 · 鸡蛋×2 · 牛奶×1 · 糖×2',result:'角色好感+80（生日专用）',time:'4小时',unlock:'陈小厨好感4心'},
+    {icon:'🍵',name:'花草茶',materials:'薰衣草×2 · 蜂蜜×1',result:'体力+40 · 心情+20',time:'30分钟',unlock:'苏晓晨好感2心'},
+  ],
+  alchemy:[
+    {icon:'✨',name:'体力药水',materials:'红草药×2 · 矿泉水×1',result:'体力+100',time:'1小时',unlock:'叶夜辰商会'},
+    {icon:'💫',name:'速成肥料',materials:'烂水果×3 · 骨粉×1',result:'作物生长加速1天',time:'2小时',unlock:'炼金台'},
+    {icon:'🌟',name:'星光精华',materials:'星光水晶×1 · 月光石×1',result:'魔法设施能量恢复',time:'6小时',unlock:'叶夜辰好感6心'},
+    {icon:'🔮',name:'洞察药剂',materials:'蓝草药×3 · 深海水×1',result:'矿洞探索范围+2层',time:'4小时',unlock:'炼金台Lv2'},
+  ],
+  forge:[
+    {icon:'🔧',name:'铜锄头',materials:'铜锭×5',result:'农地耕作工具（升级版）',time:'1天',unlock:'铁修好感2心'},
+    {icon:'⛏️',name:'铁镐',materials:'铁锭×5',result:'矿洞挖掘效率+30%',time:'1天',unlock:'铁修好感4心'},
+    {icon:'🪣',name:'金壶',materials:'金锭×5',result:'浇水范围5×5',time:'2天',unlock:'铁修好感6心'},
+    {icon:'🗡️',name:'传说剑',materials:'金锭×10 · 宝石×3 · 传说矿石×1',result:'矿洞战斗能力大幅提升',time:'3天',unlock:'古代锻炉（隐藏任务）'},
+  ],
+  machine:[
+    {icon:'🧀',name:'奶酪机',materials:'木材×50 · 铜锭×10',result:'牛奶→奶酪（售价×1.5）',time:'建造2天',unlock:'初始可建'},
+    {icon:'🍷',name:'酒桶',materials:'木材×100 · 铁锭×5',result:'果实→酒（售价×2~3）',time:'建造3天',unlock:'小屋升级Lv2'},
+    {icon:'🧃',name:'榨汁机',materials:'铜锭×20 · 玻璃×5',result:'水果→果汁（售价×1.8）',time:'建造2天',unlock:'小屋升级Lv1'},
+    {icon:'🍯',name:'蜂箱',materials:'木材×40 · 蜜蜡×5',result:'花田旁自动产蜂蜜（每2天）',time:'建造1天',unlock:'初始可建'},
+  ]
+};
+
+function renderCraftContent(tab) {
+  const data = CRAFT_DATA[tab];
+  document.getElementById('craftContent').innerHTML = `
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;overflow:hidden">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead><tr style="background:var(--cream)">
+          <th style="padding:12px 20px;text-align:left;color:var(--text-muted);font-weight:500">配方</th>
+          <th style="padding:12px;text-align:left;color:var(--text-muted);font-weight:500">材料</th>
+          <th style="padding:12px;text-align:left;color:var(--text-muted);font-weight:500">产出</th>
+          <th style="padding:12px;text-align:center;color:var(--text-muted);font-weight:500">耗时</th>
+          <th style="padding:12px 20px;text-align:left;color:var(--text-muted);font-weight:500">解锁条件</th>
+        </tr></thead>
+        <tbody>${data.map((r,i) => `
+          <tr style="border-bottom:1px solid var(--border);${i%2===0?'':'background:var(--cream)'}">
+            <td style="padding:12px 20px"><span style="font-size:18px;margin-right:10px">${r.icon}</span><strong style="color:var(--brown)">${r.name}</strong></td>
+            <td style="padding:12px;font-size:12px;color:var(--text-muted)">${r.materials}</td>
+            <td style="padding:12px;font-size:12px;color:var(--mint-dark);font-weight:500">${r.result}</td>
+            <td style="padding:12px;text-align:center;font-size:12px;color:var(--text-muted)">${r.time}</td>
+            <td style="padding:12px 20px;font-size:12px;color:var(--text-muted)">${r.unlock}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+}
+
+function switchCraftTab(btn) {
+  document.querySelectorAll('#craftTabs .filter-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderCraftContent(btn.dataset.craft);
+}
+
+/* ══════════════════════════════════════
+   PETS DATA & RENDER
+══════════════════════════════════════ */
+const PETS_DATA = [
+  {icon:'🐄',name:'奶牛',product:'牛奶',productIcon:'🥛',days:1,sellBase:200,sellStar:500,cost:5000,feed:'牧草',unlock:'谷仓建造',bg:'#f5f0e8'},
+  {icon:'🐔',name:'鸡',product:'鸡蛋',productIcon:'🥚',days:1,sellBase:100,sellStar:400,cost:2000,feed:'混合谷物',unlock:'鸡舍建造',bg:'#fef7d8'},
+  {icon:'🐑',name:'绵羊',product:'羊毛',productIcon:'🧶',days:3,sellBase:300,sellStar:800,cost:4000,feed:'牧草',unlock:'谷仓建造',bg:'#f0f0f0'},
+  {icon:'🐐',name:'山羊',product:'山羊奶',productIcon:'🥛',days:1,sellBase:250,sellStar:600,cost:4500,feed:'牧草',unlock:'谷仓升级Lv2',bg:'#e8f0e8'},
+  {icon:'🦆',name:'鸭子',product:'鸭蛋',productIcon:'🥚',days:2,sellBase:180,sellStar:450,cost:2500,feed:'混合谷物',unlock:'鸡舍升级Lv2',bg:'#e8f0fc'},
+  {icon:'🐰',name:'兔子',product:'兔毛',productIcon:'🧶',days:4,sellBase:400,sellStar:1000,cost:6000,feed:'蔬菜',unlock:'特殊任务解锁',bg:'#fce8f3'},
+  {icon:'🐝',name:'蜜蜂（蜂箱）',product:'蜂蜜',productIcon:'🍯',days:2,sellBase:200,sellStar:500,cost:1500,feed:'花田需在旁边',unlock:'初始可建',bg:'#fef7d8'},
+  {icon:'🦙',name:'羊驼',product:'特级羊毛',productIcon:'🧶',days:5,sellBase:800,sellStar:2000,cost:12000,feed:'特制饲料',unlock:'隐藏探索解锁',bg:'#f5ecd0'},
+];
+
+function renderPetGrid() {
+  document.getElementById('petGrid').innerHTML = PETS_DATA.map(p => `
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:18px;transition:all .2s;cursor:pointer" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 20px var(--shadow)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+        <div style="width:52px;height:52px;border-radius:14px;background:${p.bg};display:flex;align-items:center;justify-content:center;font-size:26px">${p.icon}</div>
+        <div style="text-align:right"><div style="font-size:10px;color:var(--text-muted)">购买价格</div><div style="font-size:16px;font-weight:700;color:var(--brown)">${p.cost}💰</div></div>
+      </div>
+      <div style="font-size:15px;font-weight:500;color:var(--brown);margin-bottom:6px">${p.name}</div>
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">每${p.days}天产出 ${p.productIcon} ${p.product}</div>
+      <div style="background:var(--cream);border-radius:10px;padding:10px 12px;font-size:11px">
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="color:var(--text-muted)">普通品</span><span style="color:var(--brown);font-weight:500">${p.sellBase}💰</span></div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="color:var(--text-muted)">★★★品质</span><span style="color:var(--mint-dark);font-weight:600">${p.sellStar}💰</span></div>
+        <div style="border-top:1px solid var(--border);padding-top:6px;color:var(--text-muted)">饲料：${p.feed}</div>
+        <div style="color:var(--text-muted);margin-top:2px">解锁：${p.unlock}</div>
+      </div>
+    </div>`).join('');
+}
+
+/* ══════════════════════════════════════
+   MAP DATA & RENDER
+══════════════════════════════════════ */
+const MAP_DATA = [
+  {icon:'🏡',name:'心动小镇中心',desc:'所有店铺、市政厅、公告板的聚集地。每周日有集市，是初期活动最密集的区域。',resources:'各类商品 · 任务委托 · 信息收集',unlock:'初始解锁',secrets:'集市日找镇长搭话可获特别奖励',bg:'linear-gradient(135deg,#e8f5f0,#fef7d8)'},
+  {icon:'🌾',name:'丰收农场区',desc:'镇东北的农业核心区，土地肥沃适合大规模种植。林木木的顾问站也在这里。',resources:'各类农产品 · 野生草药 · 蘑菇',unlock:'初始解锁',secrets:'秋季深夜偶发珍稀草药刷新',bg:'linear-gradient(135deg,#e4f5ef,#fef7d8)'},
+  {icon:'⛰️',name:'翠雾山脉',desc:'镇西侧的山区，矿洞入口在此。共有100层矿洞，越深层矿物越稀有。',resources:'铜矿 · 铁矿 · 金矿 · 宝石 · 化石',unlock:'初始解锁',secrets:'60层以下有古代锻炉（隐藏任务）',bg:'linear-gradient(135deg,#e8eafc,#e8e8e8)'},
+  {icon:'🏖️',name:'晴日海湾',desc:'镇南的海边区域，夏季开放。有专属海鱼，夏日节活动在此举行。',resources:'珊瑚鱼 · 深海鱿鱼 · 贝壳 · 海木',unlock:'春季第15天后解锁',secrets:'午夜海滩偶遇叶夜辰特殊对话',bg:'linear-gradient(135deg,#e8f0fc,#e8f5f0)'},
+  {icon:'🌲',name:'幽林密境',desc:'镇北偏僻的古老森林，木材资源丰富，同时是野生动植物的栖息地。',resources:'珍稀木材 · 野果 · 蝴蝶标本 · 林中蘑菇',unlock:'完成主线任务3后解锁',secrets:'蝴蝶迁徙季有稀有标本刷新',bg:'linear-gradient(135deg,#e8f5e8,#e0f0e0)'},
+  {icon:'🏛️',name:'遗忘古迹',desc:'地图最偏远的隐藏地区，充满神秘感的废墟。据说与叶夜辰的过去有关。',resources:'古老卷轴 · 神秘矿石 · 历史文物',unlock:'主线任务5"古老的地窖"完成后',secrets:'满月之夜出现传送阵，可进入秘境',bg:'linear-gradient(135deg,#ede8fc,#e8e0fc)'},
+  {icon:'🌄',name:'晨曦山丘',desc:'镇东南方的小山丘，是观赏日出和流星雨的绝佳地点，也是苏晓晨心动事件地点。',resources:'特殊花种 · 星光石 · 晨露草',unlock:'初始解锁（夜晚才有特别内容）',secrets:'苏晓晨8心后此地触发"夏夜流星"剧情',bg:'linear-gradient(135deg,#fce8f3,#fef7d8)'},
+  {icon:'🏔️',name:'北山祠堂',desc:'王大爷隐藏任务解锁的神秘地区，古老的石祠中有小镇最初的历史记录。',resources:'历史典籍 · 古代蓝图 · 传说矿石',unlock:'王大爷好感8心·冬季触发隐藏任务',secrets:'祠堂深处有全游戏最强的装备图纸',bg:'linear-gradient(135deg,#ddeaf7,#e8e8f0)'},
+];
+
+function renderMapGrid() {
+  document.getElementById('mapGrid').innerHTML = MAP_DATA.map(m => `
+    <div style="background:var(--white);border:1.5px solid var(--border);border-radius:18px;overflow:hidden;transition:all .22s;cursor:pointer" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 24px var(--shadow)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+      <div style="background:${m.bg};height:80px;display:flex;align-items:center;justify-content:center;font-size:40px;position:relative">
+        <span style="position:relative;z-index:1">${m.icon}</span>
+      </div>
+      <div style="padding:18px 20px">
+        <div style="font-family:'Ma Shan Zheng',cursive;font-size:18px;color:var(--brown);margin-bottom:6px">${m.name}</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.8;margin-bottom:12px">${m.desc}</div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:11px">
+          <div style="display:flex;gap:8px"><span style="color:var(--mint-dark);font-weight:500;white-space:nowrap">📦 资源：</span><span style="color:var(--text-muted)">${m.resources}</span></div>
+          <div style="display:flex;gap:8px"><span style="color:var(--peach-dark);font-weight:500;white-space:nowrap">🔓 解锁：</span><span style="color:var(--text-muted)">${m.unlock}</span></div>
+          <div style="display:flex;gap:8px"><span style="color:var(--lavender-dark);font-weight:500;white-space:nowrap">🔮 彩蛋：</span><span style="color:var(--text-muted)">${m.secrets}</span></div>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+/* update search to include new pages */
+const extraSearchItems = [
+  {icon:'🌱',title:'新手入门指南',tag:'教程',bg:'var(--mint-light)',page:'guide'},
+  {icon:'🌾',title:'农场种植 · 利润计算器',tag:'农场',bg:'var(--yellow-light)',page:'farm'},
+  {icon:'📋',title:'主线任务攻略',tag:'任务',bg:'var(--lavender-light)',page:'quest'},
+  {icon:'⚗️',title:'道具大全搜索',tag:'道具',bg:'var(--peach-light)',page:'items'},
+  {icon:'🎪',title:'活动日历 · 节日攻略',tag:'活动',bg:'var(--peach-light)',page:'events'},
+  {icon:'🏗️',title:'建造装饰 · 风格指南',tag:'建造',bg:'var(--peach-light)',page:'deco'},
+  {icon:'🍳',title:'合成配方 · 烹饪炼金',tag:'合成',bg:'var(--mint-light)',page:'craft'},
+  {icon:'🐾',title:'宠物养殖 · 动物数据',tag:'养殖',bg:'var(--peach-light)',page:'pets'},
+  {icon:'🗺️',title:'地图探索 · 隐藏地区',tag:'探索',bg:'var(--lavender-light)',page:'map'},
+];
+searchItems.push(...extraSearchItems);
+
+const _origRenderSearch = renderSearch;
+window.renderSearch = function(q) {
+  const el = document.getElementById('searchResults');
+  if (!q) { el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">输入关键词开始搜索…</div>'; return; }
+  const all = [...searchItems];
+  const results = all.filter(d => d.title.includes(q) || d.tag.includes(q));
+  if (!results.length) { el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:13px">未找到相关内容</div>'; return; }
+  el.innerHTML = results.slice(0,8).map(r => `
+    <div class="search-result-item" onclick="document.getElementById('searchOverlay').classList.remove('show');${r.type==='char'?`navigate('charDetail','${r.id}')`:r.page?`navigate('${r.page}')`:``}">
+      <div style="width:36px;height:36px;border-radius:10px;background:${r.bg};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${r.icon}</div>
+      <div><div style="font-size:14px;font-weight:500;color:var(--brown)">${r.title}</div><div style="font-size:11px;color:var(--text-muted)">${r.tag}</div></div>
+    </div>`).join('');
+};
+
 
 /* ══════════════════════════════════════
    BACK TO TOP
